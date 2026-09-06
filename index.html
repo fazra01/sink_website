@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>The E-Sink</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================
+       RESET
+    ========================== */
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      width: 100%;
+      min-height: 100%;
+    }
+
+    body {
+      overflow: hidden;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #000;
+    }
+
+
+    /* =========================
+       HOMEPAGE
+    ========================== */
+
+    .home {
+      position: relative;
+      width: 100vw;
+      height: 100svh;
+      overflow: hidden;
+    }
+
+
+    /* =========================
+       BACKGROUND VIDEO
+    ========================== */
+
+    .home-video {
+      position: absolute;
+      inset: 0;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      z-index: 0;
+    }
+
+
+    /* Temporary light overlay.
+       Adjust/remove once the real video is added. */
+
+    .home-overlay {
+      position: absolute;
+      inset: 0;
+
+      background: rgba(255, 255, 255, 0.18);
+
+      z-index: 1;
+      pointer-events: none;
+    }
+
+
+    /* =========================
+       CENTER TITLE
+    ========================== */
+
+    .home-title {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+
+      transform: translate(-50%, -50%);
+
+      z-index: 2;
+
+      margin: 0;
+
+      text-align: center;
+      font-family: "Inter", Arial, Helvetica, sans-serif;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      line-height: 0.95;
+      color: #FB4CE9;
+    }
+
+    .home-title-small {
+      display: block;
+
+      margin-bottom: 0.15em;
+
+      font-size: clamp(28px, 4vw, 72px);
+    }
+
+    .home-title-main {
+      display: block;
+
+      font-size: clamp(52px, 8vw, 150px);
+    }
+
+
+    /* =========================
+       CORNER NAVIGATION
+    ========================== */
+
+    .corner-link {
+      position: absolute;
+      z-index: 3;
+
+      padding: 0.3em 0.45em;
+
+      background: rgba(0, 0, 0, 0.6);
+      color: #ffffff;
+
+      font-size: clamp(18px, 2vw, 34px);
+      line-height: 1;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        background 180ms ease,
+        color 180ms ease;
+    }
+
+    .corner-link:hover,
+    .corner-link:focus-visible {
+      background: #ffffff;
+      color: #000000;
+    }
+
+
+    /* Equal corner spacing */
+
+    .about-link {
+      top: 24px;
+      left: 24px;
+    }
+
+    .events-link {
+      top: 24px;
+      right: 24px;
+    }
+
+    .menu-link {
+      bottom: 24px;
+      left: 24px;
+    }
+
+    .contact-link {
+      bottom: 24px;
+      right: 24px;
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================== */
+
+    @media (max-width: 700px) {
+      .about-link,
+      .events-link {
+        top: 16px;
+      }
+
+      .menu-link,
+      .contact-link {
+        bottom: 16px;
+      }
+
+      .about-link,
+      .menu-link {
+        left: 16px;
+      }
+
+      .events-link,
+      .contact-link {
+        right: 16px;
+      }
+
+      .corner-link {
+        font-size: 16px;
+      }
+    }
+
+
+    /* =========================
+       HIRING POP-UP
+       Windows XP-inspired draggable window
+    ========================== */
+
+    .hiring-popup {
+      position: fixed;
+      top: 8vh;
+      left: 50%;
+      transform: translateX(-50%);
+
+      width: min(900px, 88vw);
+      z-index: 20;
+
+      border: 3px solid #0055ea;
+      border-radius: 8px 8px 0 0;
+      background: #ece9d8;
+
+      box-shadow:
+        2px 2px 0 #001f79,
+        8px 10px 24px rgba(0, 0, 0, 0.3);
+
+      overflow: hidden;
+    }
+
+    .hiring-popup.is-closed {
+      display: none;
+    }
+
+    .hiring-popup-titlebar {
+      height: 34px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 3px 4px 3px 8px;
+
+      color: #ffffff;
+      background: linear-gradient(
+        to bottom,
+        #3c8cf4 0%,
+        #0865e6 10%,
+        #0054e3 55%,
+        #0047c8 100%
+      );
+
+      font-family: Tahoma, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+
+      cursor: move;
+      user-select: none;
+      touch-action: none;
+    }
+
+    .hiring-popup-title {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .hiring-popup-close {
+      width: 25px;
+      height: 25px;
+
+      display: grid;
+      place-items: center;
+
+      padding: 0;
+      border: 2px solid #ffffff;
+      border-radius: 4px;
+
+      color: #ffffff;
+      background: linear-gradient(
+        to bottom,
+        #f59b82 0%,
+        #e84d2c 45%,
+        #c82d17 100%
+      );
+
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1;
+
+      cursor: pointer;
+    }
+
+    .hiring-popup-close:hover,
+    .hiring-popup-close:focus-visible {
+      filter: brightness(1.1);
+    }
+
+    .hiring-popup-content {
+      position: relative;
+      width: 100%;
+      background: #ffffff;
+    }
+
+    .hiring-popup-image {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    /*
+      The four transparent links sit directly over the
+      four "Apply now" buttons in SinkPopup.png.
+    */
+
+    .apply-hotspot {
+      position: absolute;
+      z-index: 2;
+
+      display: block;
+
+      border: 0;
+      background: transparent;
+
+      cursor: pointer;
+    }
+
+    .apply-hotspot:focus-visible {
+      outline: 4px solid #0055ea;
+      outline-offset: -4px;
+    }
+
+    .apply-1 {
+      left: 6.8%;
+      top: 58.1%;
+      width: 14.7%;
+      height: 10.8%;
+    }
+
+    .apply-2 {
+      left: 24.6%;
+      top: 58.1%;
+      width: 14.8%;
+      height: 10.8%;
+    }
+
+    .apply-3 {
+      left: 6.8%;
+      top: 73.5%;
+      width: 15.1%;
+      height: 10.8%;
+    }
+
+    .apply-4 {
+      left: 24.6%;
+      top: 73.5%;
+      width: 14.9%;
+      height: 10.8%;
+    }
+
+    @media (max-width: 700px) {
+      .hiring-popup {
+        top: 10vh;
+        width: 94vw;
+      }
+
+      .hiring-popup-titlebar {
+        height: 31px;
+        font-size: 13px;
+      }
+
+      .hiring-popup-close {
+        width: 23px;
+        height: 23px;
+      }
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+  <main class="home">
+
+    <!--
+      Put your homepage video inside a "videos" folder
+      and rename/update the file path below.
+    -->
+
+    <video
+      class="home-video"
+      autoplay
+      muted
+      loop
+      playsinline
+    >
+      <source src="videos/home-background.mp4" type="video/mp4" />
+    </video>
+
+    <div class="home-overlay"></div>
+
+
+    <!-- FOUR CORNERS -->
+
+    <a class="corner-link about-link" href="about.html">
+      About Us
+    </a>
+
+    <a class="corner-link events-link" href="events.html">
+      Events
+    </a>
+
+    <a class="corner-link menu-link" href="drinks.html">
+      Drinks
+    </a>
+
+    <a class="corner-link contact-link" href="contact.html">
+      Contact Us
+    </a>
+
+
+    <!-- CENTER -->
+
+    <h1 class="home-title">
+      <span class="home-title-small">Welcome to</span>
+      <span class="home-title-main">The E-Sink</span>
+    </h1>
+
+  </main>
+
+
+  <!-- =========================
+       HIRING POP-UP
+       Change application.html below to the real application URL.
+  ========================== -->
+
+  <section
+    class="hiring-popup"
+    id="hiringPopup"
+    role="dialog"
+    aria-label="We're hiring"
+  >
+    <div class="hiring-popup-titlebar" id="hiringPopupHandle">
+      <span class="hiring-popup-title">The E-Sink — We're Hiring!</span>
+
+      <button
+        class="hiring-popup-close"
+        id="hiringPopupClose"
+        type="button"
+        aria-label="Close hiring pop-up"
+      >
+        ×
+      </button>
+    </div>
+
+    <div class="hiring-popup-content">
+      <img
+        class="hiring-popup-image"
+        src="images/SinkPopup.png"
+        alt="Welcome to the E-Sink. We're hiring."
+      />
+
+      <a
+        class="apply-hotspot apply-1"
+        href="application.html"
+        aria-label="Apply now"
+      ></a>
+
+      <a
+        class="apply-hotspot apply-2"
+        href="application.html"
+        aria-label="Apply now"
+      ></a>
+
+      <a
+        class="apply-hotspot apply-3"
+        href="application.html"
+        aria-label="Apply now"
+      ></a>
+
+      <a
+        class="apply-hotspot apply-4"
+        href="application.html"
+        aria-label="Apply now"
+      ></a>
+    </div>
+  </section>
+
+
+  <script>
+    const hiringPopup = document.getElementById("hiringPopup");
+    const hiringPopupHandle = document.getElementById("hiringPopupHandle");
+    const hiringPopupClose = document.getElementById("hiringPopupClose");
+
+    hiringPopupClose.addEventListener("click", () => {
+      hiringPopup.classList.add("is-closed");
+    });
+
+    let isDragging = false;
+    let dragOffsetX = 0;
+    let dragOffsetY = 0;
+
+    hiringPopupHandle.addEventListener("pointerdown", (event) => {
+      if (event.target.closest(".hiring-popup-close")) return;
+
+      const rect = hiringPopup.getBoundingClientRect();
+
+      /*
+        Convert the initial centered position into fixed pixel
+        coordinates the first time the user starts dragging.
+      */
+      hiringPopup.style.transform = "none";
+      hiringPopup.style.left = rect.left + "px";
+      hiringPopup.style.top = rect.top + "px";
+
+      dragOffsetX = event.clientX - rect.left;
+      dragOffsetY = event.clientY - rect.top;
+
+      isDragging = true;
+      hiringPopupHandle.setPointerCapture(event.pointerId);
+    });
+
+    hiringPopupHandle.addEventListener("pointermove", (event) => {
+      if (!isDragging) return;
+
+      const popupWidth = hiringPopup.offsetWidth;
+      const popupHeight = hiringPopup.offsetHeight;
+
+      const maxLeft = Math.max(0, window.innerWidth - popupWidth);
+      const maxTop = Math.max(0, window.innerHeight - popupHeight);
+
+      const nextLeft = Math.min(
+        Math.max(0, event.clientX - dragOffsetX),
+        maxLeft
+      );
+
+      const nextTop = Math.min(
+        Math.max(0, event.clientY - dragOffsetY),
+        maxTop
+      );
+
+      hiringPopup.style.left = nextLeft + "px";
+      hiringPopup.style.top = nextTop + "px";
+    });
+
+    function stopDragging(event) {
+      if (!isDragging) return;
+
+      isDragging = false;
+
+      if (hiringPopupHandle.hasPointerCapture(event.pointerId)) {
+        hiringPopupHandle.releasePointerCapture(event.pointerId);
+      }
+    }
+
+    hiringPopupHandle.addEventListener("pointerup", stopDragging);
+    hiringPopupHandle.addEventListener("pointercancel", stopDragging);
+  </script>
+
+</body>
+</html>
