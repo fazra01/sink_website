@@ -18,7 +18,7 @@
    * {
   box-sizing: border-box;
 
-  cursor: url("images/cat-paw-cursor.png") 4 4, auto !important;
+  cursor: url("images/cat-paw-cursor.png") 16 16, auto !important;
    }
 
     html,
@@ -274,8 +274,8 @@
     }
 
     .hiring-popup-close {
-      width: 25px;
-      height: 25px;
+      width: 32px;
+      height: 32px;
 
       display: grid;
       place-items: center;
@@ -484,13 +484,13 @@
 
       <a
         class="apply-hotspot apply-3"
-        href="application.html"
+        href="https://docs.google.com/document/d/1Rx-pVVwziEbdTT1OKqU8lmTNRIa81yhQDm06L0G7Smo/edit?usp=sharing"
         aria-label="Apply now"
       ></a>
 
       <a
         class="apply-hotspot apply-4"
-        href="application.html"
+        href="https://docs.google.com/document/d/1Rx-pVVwziEbdTT1OKqU8lmTNRIa81yhQDm06L0G7Smo/edit?usp=sharing"
         aria-label="Apply now"
       ></a>
     </div>
@@ -504,10 +504,14 @@
     setTimeout(() => {
     hiringPopup.classList.remove("is-waiting");
     }, 1500);
-    hiringPopupClose.addEventListener("click", () => {
-      hiringPopup.classList.add("is-closed");
+      hiringPopupClose.addEventListener("pointerdown", (event) => {
+      event.stopPropagation();
     });
 
+    hiringPopupClose.addEventListener("click", (event) => {
+      event.stopPropagation();
+      hiringPopup.classList.add("is-closed");
+    });
     let isDragging = false;
     let dragOffsetX = 0;
     let dragOffsetY = 0;
