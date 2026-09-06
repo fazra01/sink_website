@@ -15,9 +15,11 @@
        RESET
     ========================== */
 
-    * {
-      box-sizing: border-box;
-    }
+   * {
+  box-sizing: border-box;
+
+  cursor: url("images/cat-paw-cursor.png") 4 4, auto !important;
+   }
 
     html,
     body {
@@ -204,12 +206,13 @@
     ========================== */
 
     .hiring-popup {
+      position: fixed;
       top: 12vh;
       right: 5vw;
       left: auto;
       transform: none;
 
-      width: min(560px, 42vw);
+      width: min(780px, 56vw);
       min-width: 320px;
       max-width: 80vw;
       max-height: 85vh;
@@ -259,6 +262,7 @@
       font-weight: 700;
 
       cursor: move;
+      cursor: pointer;
       user-select: none;
       touch-action: none;
     }
@@ -468,13 +472,13 @@
 
       <a
         class="apply-hotspot apply-1"
-        href="application.html"
+        href="https://docs.google.com/document/d/1Rx-pVVwziEbdTT1OKqU8lmTNRIa81yhQDm06L0G7Smo/edit?usp=sharing"
         aria-label="Apply now"
       ></a>
 
       <a
         class="apply-hotspot apply-2"
-        href="application.html"
+        href="https://docs.google.com/document/d/1Rx-pVVwziEbdTT1OKqU8lmTNRIa81yhQDm06L0G7Smo/edit?usp=sharing"
         aria-label="Apply now"
       ></a>
 
@@ -499,7 +503,7 @@
     const hiringPopupClose = document.getElementById("hiringPopupClose");
     setTimeout(() => {
     hiringPopup.classList.remove("is-waiting");
-    }, 2500);
+    }, 1500);
     hiringPopupClose.addEventListener("click", () => {
       hiringPopup.classList.add("is-closed");
     });
