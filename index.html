@@ -204,12 +204,17 @@
     ========================== */
 
     .hiring-popup {
-      position: fixed;
-      top: 8vh;
-      left: 50%;
-      transform: translateX(-50%);
+      top: 12vh;
+      right: 5vw;
+      left: auto;
+      transform: none;
 
-      width: min(900px, 88vw);
+      width: min(560px, 42vw);
+      min-width: 320px;
+      max-width: 80vw;
+      max-height: 85vh;
+
+      resize: both;
       z-index: 20;
 
       border: 3px solid #0055ea;
@@ -225,6 +230,10 @@
 
     .hiring-popup.is-closed {
       display: none;
+    }
+
+    .hiring-popup.is-waiting {
+    display: none;
     }
 
     .hiring-popup-titlebar {
@@ -431,9 +440,9 @@
        Change application.html below to the real application URL.
   ========================== -->
 
-  <section
-    class="hiring-popup"
-    id="hiringPopup"
+<section
+  class="hiring-popup is-waiting"
+  id="hiringPopup"
     role="dialog"
     aria-label="We're hiring"
   >
@@ -488,7 +497,9 @@
     const hiringPopup = document.getElementById("hiringPopup");
     const hiringPopupHandle = document.getElementById("hiringPopupHandle");
     const hiringPopupClose = document.getElementById("hiringPopupClose");
-
+    setTimeout(() => {
+    hiringPopup.classList.remove("is-waiting");
+    }, 2500);
     hiringPopupClose.addEventListener("click", () => {
       hiringPopup.classList.add("is-closed");
     });
@@ -507,6 +518,7 @@
         coordinates the first time the user starts dragging.
       */
       hiringPopup.style.transform = "none";
+      hiringPopup.style.right = "auto";
       hiringPopup.style.left = rect.left + "px";
       hiringPopup.style.top = rect.top + "px";
 
