@@ -9,6 +9,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
 
   <style>
     @font-face {
@@ -70,7 +72,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 100px;
+      margin-bottom: 20px;
     }
 
     .home-link {
@@ -82,8 +84,32 @@
       font-family: "VCR OSD Mono", monospace;
       font-size: 26px;
     }
+        .drinks-hero {
+      position: relative;
 
+      height: 420px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      overflow: hidden;
+    }
+
+    .horse-video {
+      position: absolute;
+
+      width: 900px;
+      max-width: 80vw;
+
+      mix-blend-mode: multiply;
+
+      pointer-events: none;
+      z-index: 0;
+    }
     .page-title {
+      position: relative;
+      z-index: 1;
       margin: 0 0 100px;
       font-family: "VCR OSD Mono", monospace;
       font-size: clamp(70px, 11vw, 180px);
@@ -134,14 +160,44 @@
       gap: 24px;
       align-items: baseline;
       padding-bottom: 14px;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.16);
     }
 
-    .drink-name {
-      font-size: clamp(22px, 2vw, 32px);
-      font-weight: 400;
+.drink-name {
+  font-family: "UnifrakturMaguntia", serif;
+  font-size: clamp(36px, 3vw, 50px);
+  font-weight: 400;
+  line-height: 0.95;
+
+  color: #6F686D;
+
+  -webkit-text-stroke: 0.35px #000;
+
+  -webkit-font-smoothing: none;
+  text-rendering: optimizeSpeed;
+
+  filter: contrast(1.25);
+}
+
+        .specialty-item {
+      display: block;
     }
 
+    .drink-description {
+      margin-top: 7px;
+
+      font-family: "VCR OSD Mono", monospace;
+      font-size: 16px;
+      line-height: 1.35;
+    }
+
+    .ingredient {
+      color: #FF3F67;
+    }
+
+    .plus {
+      color: #71FE4D;
+      padding: 0 4px;
+    }
     .prices {
       display: flex;
       gap: 18px;
@@ -149,7 +205,13 @@
       font-size: clamp(16px, 1.5vw, 22px);
       white-space: nowrap;
     }
+    .size-label {
+    color:#71FE4D; 
+    }
 
+    .price-number {
+    color: #FF3F67;
+    }
     .specialty-prices {
       margin: -12px 0 34px;
       font-family: "VCR OSD Mono", monospace;
@@ -229,7 +291,21 @@
       <a class="home-link" href="index.html">Home</a>
     </div>
 
-    <h1 class="page-title">DRINKS</h1>
+    <div class="drinks-hero">
+
+  <video
+    class="horse-video"
+    autoplay
+    muted
+    loop
+    playsinline
+  >
+    <source src="videos/horse.webm" type="video/webm">
+  </video>
+
+  <h1 class="page-title">DRINKS</h1>
+
+</div>
 
     <div class="menu-grid">
 
@@ -242,54 +318,54 @@
           <div class="menu-item">
             <span class="drink-name">Drip Coffee</span>
             <span class="prices">
-              <span>S 2.75</span>
-              <span>M 3.00</span>
-              <span>L 3.25</span>
+              <span><span class="size-label">S</span> <span class="price-number">2.75</span></span>
+              <span><span class="size-label">M</span> <span class="price-number">3.00</span></span>
+              <span><span class="size-label">L</span> <span class="price-number">3.25</span></span>
             </span>
           </div>
 
           <div class="menu-item">
             <span class="drink-name">Cafe au Lait</span>
             <span class="prices">
-              <span>S 3.75</span>
-              <span>M 4.25</span>
-              <span>L 5.75</span>
+              <span><span class="size-label">S</span> <span class="price-number">3.75</span></span>
+              <span><span class="size-label">M</span> <span class="price-number">4.25</span></span>
+              <span><span class="size-label">L</span> <span class="price-number">5.75</span></span>
             </span>
           </div>
 
           <div class="menu-item">
             <span class="drink-name">Cold Brew</span>
             <span class="prices">
-              <span>S 4.25</span>
-              <span>M 4.75</span>
-              <span>L 5.25</span>
+              <span><span class="size-label">S</span> <span class="price-number">4.25</span></span>
+              <span><span class="size-label">M</span> <span class="price-number">4.75</span></span>
+              <span><span class="size-label">L</span> <span class="price-number">5.25</span></span>
             </span>
           </div>
 
           <div class="menu-item">
             <span class="drink-name">Espresso</span>
             <span class="prices">
-              <span>S 2.75</span>
-              <span>M 3.25</span>
-              <span>L 3.75</span>
+              <span><span class="size-label">S</span> <span class="price-number">2.75</span></span>
+              <span><span class="size-label">M</span> <span class="price-number">3.25</span></span>
+              <span><span class="size-label">L</span> <span class="price-number">3.75</span></span>
             </span>
           </div>
 
           <div class="menu-item">
             <span class="drink-name">Americano</span>
             <span class="prices">
-              <span>S 2.75</span>
-              <span>M 3.25</span>
-              <span>L 3.75</span>
+              <span><span class="size-label">S</span> <span class="price-number">2.75</span></span>
+              <span><span class="size-label">M</span> <span class="price-number">3.25</span></span>
+              <span><span class="size-label">L</span> <span class="price-number">3.75</span></span>
             </span>
           </div>
 
           <div class="menu-item">
             <span class="drink-name">Mocha</span>
             <span class="prices">
-              <span>S 4.50</span>
-              <span>M 5.00</span>
-              <span>L 5.50</span>
+              <span><span class="size-label">S</span> <span class="price-number">4.50</span></span>
+              <span><span class="size-label">M</span> <span class="price-number">5.00</span></span>
+              <span><span class="size-label">L</span> <span class="price-number">5.50</span></span>
             </span>
           </div>
 
@@ -306,43 +382,43 @@
           <div class="menu-item">
             <span class="drink-name">Tea</span>
             <span class="prices">
-              <span>Any size 2.50</span>
+              <span><span class="size-label">Any size</span> <span class="price-number">2.50</span></span>
             </span>
           </div>
 
           <div class="menu-item">
             <span class="drink-name">Chai Latte</span>
             <span class="prices">
-              <span>S 4.25</span>
-              <span>M 4.75</span>
-              <span>L 5.25</span>
+              <span><span class="size-label">S</span> <span class="price-number">4.25</span></span>
+              <span><span class="size-label">M</span> <span class="price-number">4.75</span></span>
+              <span><span class="size-label">L</span> <span class="price-number">5.25</span></span>
             </span>
           </div>
 
           <div class="menu-item">
             <span class="drink-name">Matcha Latte</span>
             <span class="prices">
-              <span>S 4.25</span>
-              <span>M 4.75</span>
-              <span>L 5.25</span>
+              <span><span class="size-label">S</span> <span class="price-number">4.25</span></span>
+              <span><span class="size-label">M</span> <span class="price-number">4.75</span></span>
+              <span><span class="size-label">L</span> <span class="price-number">5.25</span></span>
             </span>
           </div>
 
           <div class="menu-item">
             <span class="drink-name">Steamer</span>
             <span class="prices">
-              <span>S 2.75</span>
-              <span>M 3.25</span>
-              <span>L 3.75</span>
+              <span><span class="size-label">S</span> <span class="price-number">2.75</span></span>
+              <span><span class="size-label">M</span> <span class="price-number">3.25</span></span>
+              <span><span class="size-label">L</span> <span class="price-number">3.75</span></span>
             </span>
           </div>
 
           <div class="menu-item">
             <span class="drink-name">Hot Chocolate</span>
             <span class="prices">
-              <span>S 3.75</span>
-              <span>M 4.25</span>
-              <span>L 4.75</span>
+              <span><span class="size-label">S</span> <span class="price-number">3.75</span></span>
+              <span><span class="size-label">M</span> <span class="price-number">4.25</span></span>
+              <span><span class="size-label">L</span> <span class="price-number">4.75</span></span>
             </span>
           </div>
 
@@ -356,69 +432,172 @@
   <h2 class="section-title">SPECIALTY DRINKS</h2>
 
   <p class="specialty-prices">
-    S 4.75 &nbsp;&nbsp; M 5.25 &nbsp;&nbsp; L 5.75
+    <span class="size-label">S</span> <span class="price-number">4.75</span>
+    &nbsp;&nbsp;
+    <span class="size-label">M</span> <span class="price-number">5.25</span>
+    &nbsp;&nbsp;
+    <span class="size-label">L</span> <span class="price-number">5.75</span>
   </p>
 </div>
 
-        <div class="specialty-list">
+<div class="specialty-list">
 
-          <div class="specialty-column">
-            <div class="menu-item">
-              <span class="drink-name">Lucy in the Chai</span>
-            </div>
+  <!-- LEFT COLUMN -->
+  <div class="specialty-column">
 
-            <div class="menu-item">
-              <span class="drink-name">Medford Fog</span>
-            </div>
+    <div class="menu-item specialty-item">
+      <div class="drink-name">Lucy in the Chai</div>
 
-            <div class="menu-item">
-              <span class="drink-name">Soylent Green</span>
-            </div>
+      <div class="drink-description">
+        <span class="ingredient">Chai Latte</span>
+        <span class="plus">+</span>
+        <span class="ingredient">Espresso</span>
+      </div>
+    </div>
 
-            <div class="menu-item">
-              <span class="drink-name">Cloud Nine</span>
-            </div>
 
-            <div class="menu-item">
-              <span class="drink-name">Beesting</span>
-            </div>
+    <div class="menu-item specialty-item">
+      <div class="drink-name">Medford Fog</div>
 
-            <div class="menu-item">
-              <span class="drink-name">Oblivion</span>
-            </div>
+      <div class="drink-description">
+        <span class="ingredient">Earl Grey Latte</span>
+        <span class="plus">+</span>
+        <span class="ingredient">Vanilla</span>
+      </div>
+    </div>
 
-            <div class="menu-item">
-              <span class="drink-name">Hot Karl</span>
-            </div>
-          </div>
 
-          <div class="specialty-column">
-            <div class="menu-item">
-              <span class="drink-name">Cinny Vanilly</span>
-            </div>
+    <div class="menu-item specialty-item">
+      <div class="drink-name">Soylent Green</div>
 
-            <div class="menu-item">
-              <span class="drink-name">Girl Grass</span>
-            </div>
+      <div class="drink-description">
+        <span class="ingredient">Green Tea</span>
+        <span class="plus">+</span>
+        <span class="ingredient">Soy Chai Latte</span>
+      </div>
+    </div>
 
-            <div class="menu-item">
-              <span class="drink-name">Question 4</span>
-            </div>
 
-            <div class="menu-item">
-              <span class="drink-name">Blossom</span>
-            </div>
+    <div class="menu-item specialty-item">
+      <div class="drink-name">Cloud Nine</div>
 
-            <div class="menu-item">
-              <span class="drink-name">Vaccine</span>
-            </div>
+      <div class="drink-description">
+        <span class="ingredient">Chamomile Latte</span>
+        <span class="plus">+</span>
+        <span class="ingredient">Honey</span>
+        <span class="plus">+</span>
+        <span class="ingredient">Lavender</span>
+      </div>
+    </div>
 
-            <div class="menu-item">
-              <span class="drink-name">Everything Nice</span>
-            </div>
-          </div>
 
-        </div>
+    <div class="menu-item specialty-item">
+      <div class="drink-name">Beesting</div>
+
+      <div class="drink-description">
+        <span class="ingredient">Cinnamon Latte</span>
+        <span class="plus">+</span>
+        <span class="ingredient">Honey</span>
+      </div>
+    </div>
+
+
+    <div class="menu-item specialty-item">
+      <div class="drink-name">Oblivion</div>
+
+      <div class="drink-description">
+        <span class="ingredient">Drip Coffee</span>
+        <span class="plus">+</span>
+        <span class="ingredient">Espresso</span>
+        <span class="plus">+</span>
+        <span class="ingredient">Chocolate</span>
+      </div>
+    </div>
+
+
+    <div class="menu-item specialty-item">
+      <div class="drink-name">Hot Karl</div>
+      <div class="drink-description">
+       <span class="ingredient">Chocolate</span>
+        <span class="plus">+</span>
+        <span class="ingredient">Hazelnut Latte</span>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- RIGHT COLUMN -->
+  <div class="specialty-column">
+
+    <div class="menu-item specialty-item">
+      <div class="drink-name">Cinny Vanilly</div>
+
+      <div class="drink-description">
+        <span class="ingredient">Cinnamon</span>
+        <span class="plus">+</span>
+        <span class="ingredient">Vanilla Latte</span>
+      </div>
+    </div>
+
+
+    <div class="menu-item specialty-item">
+      <div class="drink-name">Girl Grass</div>
+
+      <div class="drink-description">
+        <span class="ingredient">Lavender</span>
+        <span class="plus">+</span>
+        <span class="ingredient">Lemonade</span>
+        <span class="plus">+</span>
+        <span class="ingredient">Matcha</span>
+      </div>
+    </div>
+
+
+    <div class="menu-item specialty-item">
+      <div class="drink-name">Question 4</div>
+
+      <div class="drink-description">
+        <span class="ingredient">Matcha Latte</span>
+        <span class="plus">+</span>
+        <span class="ingredient">Mint</span>
+      </div>
+    </div>
+
+
+    <div class="menu-item specialty-item">
+      <div class="drink-name">Blossom</div>
+
+      <div class="drink-description">
+        <span class="ingredient">Rose</span>
+        <span class="plus">+</span>
+        <span class="ingredient">Vanilla Latte</span>
+      </div>
+    </div>
+
+
+    <div class="menu-item specialty-item">
+      <div class="drink-name">Vaccine</div>
+
+      <div class="drink-description">
+        <span class="ingredient">Barista's Choice</span>
+      </div>
+    </div>
+
+
+    <div class="menu-item specialty-item">
+      <div class="drink-name">Everything Nice</div>
+
+      <div class="drink-description">
+        <span class="ingredient">Lemonade</span>
+        <span class="plus">+</span>
+        <span class="ingredient">Chai</span>
+      </div>
+    </div>
+
+  </div>
+
+</div>
       </section>
 
     </div>
