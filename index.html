@@ -9,12 +9,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     /* =========================
        RESET
     ========================== */
-
+    @font-face {
+  font-family: "VCR OSD Mono";
+  src: url("fonts/VCR_OSD_MONO.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
    * {
   box-sizing: border-box;
 
@@ -95,19 +101,24 @@
 
       text-align: center;
       font-family: "Inter", Arial, Helvetica, sans-serif;
-      font-weight: 300;
+      font-weight: 600;
       letter-spacing: -0.02em;
       line-height: 0.95;
       color: #FB4CE9;
     }
 
-    .home-title-small {
-      display: block;
+.home-title-small {
+  display: block;
 
-      margin-bottom: 0.15em;
+  font-family: "VCR OSD Mono", monospace;
+  font-size: 52px;
+  font-weight: normal;
+  letter-spacing: 0;
 
-      font-size: clamp(28px, 4vw, 72px);
-    }
+  color: #6f6f6f;
+
+  margin-bottom: 38px;
+}
 
     .home-title-main {
       display: block;
@@ -120,30 +131,24 @@
        CORNER NAVIGATION
     ========================== */
 
-    .corner-link {
-      position: absolute;
-      z-index: 3;
+.corner-link {
+  
+  position: absolute;
+  z-index: 3;
 
-      padding: 0.3em 0.45em;
+  padding: 0.3em 0.45em;
 
-      background: rgba(0, 0, 0, 0.6);
-      color: #ffffff;
+  background: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
 
-      font-size: clamp(18px, 2vw, 34px);
-      line-height: 1;
-      text-decoration: none;
-      text-transform: uppercase;
+  font-family: "VCR OSD Mono", monospace;
+  font-weight: 500;
+  font-size: clamp(18px, 2vw, 34px);
 
-      transition:
-        background 180ms ease,
-        color 180ms ease;
-    }
+  line-height: 1;
+  text-decoration: none;
+}
 
-    .corner-link:hover,
-    .corner-link:focus-visible {
-      background: #ffffff;
-      color: #000000;
-    }
 
 
     /* Equal corner spacing */
@@ -432,8 +437,8 @@
     <!-- CENTER -->
 
     <h1 class="home-title">
-      <span class="home-title-small">Welcome to</span>
-      <span class="home-title-main">The E-Sink</span>
+      <span class="home-title-small">WELCOME TO THE</span>
+      <span class="home-title-main">E-SINK</span>
     </h1>
 
   </main>
