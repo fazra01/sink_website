@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Drinks — The E-Sink</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    @font-face {
+      font-family: "VCR OSD Mono";
+      src: url("fonts/VCR_OSD_MONO.ttf") format("truetype");
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    * {
+      box-sizing: border-box;
+      cursor: url("images/cat-paw-cursor.png") 16 16, auto !important;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+    }
+
+    body {
+      font-family: "Inter", Arial, sans-serif;
+      color: #111;
+      background: #000;
+    }
+
+    /* =========================
+       FIXED VIDEO BACKGROUND
+    ========================== */
+
+    .page-video {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+
+    .page-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.72);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* =========================
+       PAGE
+    ========================== */
+
+    .drinks-page {
+      width: min(1400px, calc(100% - 64px));
+      margin: 0 auto;
+      padding: 32px 0 100px;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 100px;
+    }
+
+    .home-link {
+      display: inline-block;
+      padding: 12px 18px;
+      background: rgba(0, 0, 0, 0.58);
+      color: #fff;
+      text-decoration: none;
+      font-family: "VCR OSD Mono", monospace;
+      font-size: 26px;
+    }
+
+    .page-title {
+      margin: 0 0 100px;
+      font-family: "VCR OSD Mono", monospace;
+      font-size: clamp(70px, 11vw, 180px);
+      font-weight: normal;
+      line-height: 0.8;
+      color: #FB4CE9;
+      text-align: center;
+    }
+
+    /* =========================
+       MENU LAYOUT
+    ========================== */
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px 90px;
+      align-items: start;
+    }
+
+    .menu-section {
+      background: rgba(255, 255, 255, 0.62);
+      padding: 28px;
+      backdrop-filter: blur(4px);
+    }
+
+    .menu-section.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .section-title {
+      margin: 0 0 34px;
+      font-family: "VCR OSD Mono", monospace;
+      font-size: clamp(32px, 4vw, 58px);
+      font-weight: normal;
+      line-height: 1;
+      color: #6f6f6f;
+    }
+
+    .menu-list {
+      display: grid;
+      gap: 24px;
+    }
+
+    .menu-item {
+      display: grid;
+      grid-template-columns: minmax(170px, 1fr) auto;
+      gap: 24px;
+      align-items: baseline;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+    }
+
+    .drink-name {
+      font-size: clamp(22px, 2vw, 32px);
+      font-weight: 400;
+    }
+
+    .prices {
+      display: flex;
+      gap: 18px;
+      font-family: "VCR OSD Mono", monospace;
+      font-size: clamp(16px, 1.5vw, 22px);
+      white-space: nowrap;
+    }
+
+    .specialty-prices {
+      margin: -12px 0 34px;
+      font-family: "VCR OSD Mono", monospace;
+      font-size: clamp(18px, 2vw, 28px);
+      color: #6f6f6f;
+    }
+
+    .specialty-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0 70px;
+    }
+
+    .specialty-column {
+      display: grid;
+      gap: 24px;
+    }
+
+    @media (max-width: 850px) {
+      .drinks-page {
+        width: min(100% - 32px, 1400px);
+        padding-top: 16px;
+      }
+
+      .top-bar {
+        margin-bottom: 70px;
+      }
+
+      .page-title {
+        margin-bottom: 70px;
+      }
+
+      .menu-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .menu-section.full-width {
+        grid-column: auto;
+      }
+
+      .menu-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .prices {
+        flex-wrap: wrap;
+      }
+
+      .specialty-list {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- SAME LOOPING VIDEO AS HOMEPAGE -->
+  <video
+    class="page-video"
+    autoplay
+    muted
+    loop
+    playsinline
+  >
+    <source src="videos/home-background.mp4" type="video/mp4" />
+  </video>
+
+  <div class="page-overlay"></div>
+
+  <main class="drinks-page">
+
+    <div class="top-bar">
+      <a class="home-link" href="index.html">Home</a>
+    </div>
+
+    <h1 class="page-title">DRINKS</h1>
+
+    <div class="menu-grid">
+
+      <!-- ESPRESSO + COFFEE -->
+      <section class="menu-section">
+        <h2 class="section-title">ESPRESSO + COFFEE</h2>
+
+        <div class="menu-list">
+
+          <div class="menu-item">
+            <span class="drink-name">Drip Coffee</span>
+            <span class="prices">
+              <span>S 2.75</span>
+              <span>M 3.00</span>
+              <span>L 3.25</span>
+            </span>
+          </div>
+
+          <div class="menu-item">
+            <span class="drink-name">Cafe au Lait</span>
+            <span class="prices">
+              <span>S 3.75</span>
+              <span>M 4.25</span>
+              <span>L 5.75</span>
+            </span>
+          </div>
+
+          <div class="menu-item">
+            <span class="drink-name">Cold Brew</span>
+            <span class="prices">
+              <span>S 4.25</span>
+              <span>M 4.75</span>
+              <span>L 5.25</span>
+            </span>
+          </div>
+
+          <div class="menu-item">
+            <span class="drink-name">Espresso</span>
+            <span class="prices">
+              <span>S 2.75</span>
+              <span>M 3.25</span>
+              <span>L 3.75</span>
+            </span>
+          </div>
+
+          <div class="menu-item">
+            <span class="drink-name">Americano</span>
+            <span class="prices">
+              <span>S 2.75</span>
+              <span>M 3.25</span>
+              <span>L 3.75</span>
+            </span>
+          </div>
+
+          <div class="menu-item">
+            <span class="drink-name">Mocha</span>
+            <span class="prices">
+              <span>S 4.50</span>
+              <span>M 5.00</span>
+              <span>L 5.50</span>
+            </span>
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- TEA + MORE -->
+      <section class="menu-section">
+        <h2 class="section-title">TEA + MORE</h2>
+
+        <div class="menu-list">
+
+          <div class="menu-item">
+            <span class="drink-name">Tea</span>
+            <span class="prices">
+              <span>Any size 2.50</span>
+            </span>
+          </div>
+
+          <div class="menu-item">
+            <span class="drink-name">Chai Latte</span>
+            <span class="prices">
+              <span>S 4.25</span>
+              <span>M 4.75</span>
+              <span>L 5.25</span>
+            </span>
+          </div>
+
+          <div class="menu-item">
+            <span class="drink-name">Matcha Latte</span>
+            <span class="prices">
+              <span>S 4.25</span>
+              <span>M 4.75</span>
+              <span>L 5.25</span>
+            </span>
+          </div>
+
+          <div class="menu-item">
+            <span class="drink-name">Steamer</span>
+            <span class="prices">
+              <span>S 2.75</span>
+              <span>M 3.25</span>
+              <span>L 3.75</span>
+            </span>
+          </div>
+
+          <div class="menu-item">
+            <span class="drink-name">Hot Chocolate</span>
+            <span class="prices">
+              <span>S 3.75</span>
+              <span>M 4.25</span>
+              <span>L 4.75</span>
+            </span>
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- SPECIALTY DRINKS -->
+      <section class="menu-section full-width">
+<div class="specialty-heading-row">
+  <h2 class="section-title">SPECIALTY DRINKS</h2>
+
+  <p class="specialty-prices">
+    S 4.75 &nbsp;&nbsp; M 5.25 &nbsp;&nbsp; L 5.75
+  </p>
+</div>
+
+        <div class="specialty-list">
+
+          <div class="specialty-column">
+            <div class="menu-item">
+              <span class="drink-name">Lucy in the Chai</span>
+            </div>
+
+            <div class="menu-item">
+              <span class="drink-name">Medford Fog</span>
+            </div>
+
+            <div class="menu-item">
+              <span class="drink-name">Soylent Green</span>
+            </div>
+
+            <div class="menu-item">
+              <span class="drink-name">Cloud Nine</span>
+            </div>
+
+            <div class="menu-item">
+              <span class="drink-name">Beesting</span>
+            </div>
+
+            <div class="menu-item">
+              <span class="drink-name">Oblivion</span>
+            </div>
+
+            <div class="menu-item">
+              <span class="drink-name">Hot Karl</span>
+            </div>
+          </div>
+
+          <div class="specialty-column">
+            <div class="menu-item">
+              <span class="drink-name">Cinny Vanilly</span>
+            </div>
+
+            <div class="menu-item">
+              <span class="drink-name">Girl Grass</span>
+            </div>
+
+            <div class="menu-item">
+              <span class="drink-name">Question 4</span>
+            </div>
+
+            <div class="menu-item">
+              <span class="drink-name">Blossom</span>
+            </div>
+
+            <div class="menu-item">
+              <span class="drink-name">Vaccine</span>
+            </div>
+
+            <div class="menu-item">
+              <span class="drink-name">Everything Nice</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+</body>
+</html>

@@ -111,7 +111,7 @@
   display: block;
 
   font-family: "VCR OSD Mono", monospace;
-  font-size: 52px;
+  font-size: 64px;
   font-weight: normal;
   letter-spacing: 0;
 
@@ -136,17 +136,36 @@
   position: absolute;
   z-index: 3;
 
-  padding: 0.3em 0.45em;
+  padding: 0.38em 0.55em;
 
   background: rgba(0, 0, 0, 0.6);
   color: #ffffff;
 
   font-family: "VCR OSD Mono", monospace;
   font-weight: 500;
-  font-size: clamp(18px, 2vw, 34px);
+  font-size: 40px;
 
   line-height: 1;
   text-decoration: none;
+clip-path: polygon(
+  8px 0,
+  calc(100% - 8px) 0,
+
+  calc(100% - 8px) 8px,
+  100% 8px,
+
+  100% calc(100% - 8px),
+  calc(100% - 8px) calc(100% - 8px),
+
+  calc(100% - 8px) 100%,
+  8px 100%,
+
+  8px calc(100% - 8px),
+  0 calc(100% - 8px),
+
+  0 8px,
+  8px 8px
+);
 }
 
 
@@ -200,7 +219,7 @@
       }
 
       .corner-link {
-        font-size: 16px;
+        font-size: 24px;
       }
     }
 
