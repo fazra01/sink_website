@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Events — The E-Sink</title>
+
+  <style>
+    @font-face {
+      font-family: "VCR OSD Mono";
+      src: url("fonts/VCR_OSD_MONO.ttf") format("truetype");
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    * {
+      box-sizing: border-box;
+      cursor: url("images/cat-paw-cursor.png") 16 16, auto !important;
+    }
+
+    html,
+    body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      overflow: hidden;
+      background: #000;
+      font-family: "VCR OSD Mono", monospace;
+    }
+
+    .events-background {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .home-link {
+      position: fixed;
+      top: 32px;
+      left: 32px;
+      z-index: 1000;
+
+      display: inline-block;
+      padding: 16px 24px;
+
+      background: rgba(0, 0, 0, 0.58);
+      color: #fff;
+
+      font-family: "VCR OSD Mono", monospace;
+      font-size: 34px;
+      line-height: 1;
+      text-decoration: none;
+
+      clip-path: polygon(
+        8px 0,
+        calc(100% - 8px) 0,
+        calc(100% - 8px) 8px,
+        100% 8px,
+        100% calc(100% - 8px),
+        calc(100% - 8px) calc(100% - 8px),
+        calc(100% - 8px) 100%,
+        8px 100%,
+        8px calc(100% - 8px),
+        0 calc(100% - 8px),
+        0 8px,
+        8px 8px
+      );
+    }
+
+    .event-window {
+      position: fixed;
+
+      opacity: 0;
+      visibility: hidden;
+
+      width: min(430px, 38vw);
+      height: min(550px, 68vh);
+
+      min-width: 270px;
+      min-height: 260px;
+
+      max-width: 88vw;
+      max-height: 88vh;
+
+      border: 3px solid #0055ea;
+      border-radius: 8px 8px 0 0;
+
+      background: #ece9d8;
+
+      box-shadow:
+        2px 2px 0 #001f79,
+        9px 12px 24px rgba(0, 0, 0, 0.3);
+
+      resize: both;
+      overflow: hidden;
+    }
+
+    .event-window.is-visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .event-window.is-closed {
+      display: none;
+    }
+
+    .event-titlebar {
+      height: 36px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 3px 4px 3px 9px;
+
+      color: #fff;
+      background: linear-gradient(
+        to bottom,
+        #3c8cf4 0%,
+        #0865e6 10%,
+        #0054e3 55%,
+        #0047c8 100%
+      );
+
+      font-family: Tahoma, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+
+      user-select: none;
+      touch-action: none;
+    }
+
+    .event-window-title {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .event-close {
+      position: relative;
+
+      width: 29px;
+      height: 29px;
+
+      display: grid;
+      place-items: center;
+
+      padding: 0;
+      border: 2px solid #fff;
+      border-radius: 4px;
+
+      background: linear-gradient(
+        to bottom,
+        #f59b82 0%,
+        #e84d2c 45%,
+        #c82d17 100%
+      );
+
+      color: #fff;
+
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1;
+
+      z-index: 2;
+    }
+
+    .event-close::before {
+      content: "";
+      position: absolute;
+      inset: -12px;
+    }
+
+    .event-content {
+      position: relative;
+      width: 100%;
+      height: calc(100% - 36px);
+      min-height: 0;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .event-flyer {
+      display: none;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #fff;
+    }
+
+    .event-window.has-event .event-flyer {
+      display: block;
+    }
+
+    .empty-event {
+      width: 100%;
+      height: 100%;
+
+      display: grid;
+      place-items: center;
+
+      padding: 36px;
+
+      color: #6f6f6f;
+      background: #fff;
+
+      font-family: "VCR OSD Mono", monospace;
+      font-size: clamp(22px, 2.3vw, 34px);
+      line-height: 1.2;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .event-window.has-event .empty-event {
+      display: none;
+    }
+
+    @media (max-width: 760px) {
+      .home-link {
+        top: 16px;
+        left: 16px;
+        padding: 12px 17px;
+        font-size: 24px;
+      }
+
+      .event-window {
+        width: 76vw;
+        height: 58vh;
+        min-width: 230px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <video
+    class="events-background"
+    autoplay
+    muted
+    loop
+    playsinline
+  >
+    <source src="videos/horse2.webm" type="video/webm" />
+  </video>
+
+  <a class="home-link" href="index.html">Home</a>
+
+  <!--
+    ALWAYS SIX EVENT WINDOWS.
+
+    To add flyers, create:
+      images/events/event1.png
+      images/events/event2.png
+      ...
+      images/events/event6.png
+
+    JPG, JPEG and WEBP also work.
+
+    If a numbered event image does not exist, that popup automatically
+    says "NO MORE EVENTS TO SHOW".
+  -->
+
+  <section class="event-window" data-event-slot="1" aria-label="Event 1">
+    <div class="event-titlebar">
+      <span class="event-window-title">E-SINK EVENTS — 01</span>
+      <button class="event-close" type="button" aria-label="Close event 1">×</button>
+    </div>
+    <div class="event-content">
+      <img class="event-flyer" alt="Event flyer 1" />
+      <div class="empty-event">No more events to show</div>
+    </div>
+  </section>
+
+  <section class="event-window" data-event-slot="2" aria-label="Event 2">
+    <div class="event-titlebar">
+      <span class="event-window-title">E-SINK EVENTS — 02</span>
+      <button class="event-close" type="button" aria-label="Close event 2">×</button>
+    </div>
+    <div class="event-content">
+      <img class="event-flyer" alt="Event flyer 2" />
+      <div class="empty-event">No more events to show</div>
+    </div>
+  </section>
+
+  <section class="event-window" data-event-slot="3" aria-label="Event 3">
+    <div class="event-titlebar">
+      <span class="event-window-title">E-SINK EVENTS — 03</span>
+      <button class="event-close" type="button" aria-label="Close event 3">×</button>
+    </div>
+    <div class="event-content">
+      <img class="event-flyer" alt="Event flyer 3" />
+      <div class="empty-event">No more events to show</div>
+    </div>
+  </section>
+
+  <section class="event-window" data-event-slot="4" aria-label="Event 4">
+    <div class="event-titlebar">
+      <span class="event-window-title">E-SINK EVENTS — 04</span>
+      <button class="event-close" type="button" aria-label="Close event 4">×</button>
+    </div>
+    <div class="event-content">
+      <img class="event-flyer" alt="Event flyer 4" />
+      <div class="empty-event">No more events to show</div>
+    </div>
+  </section>
+
+  <section class="event-window" data-event-slot="5" aria-label="Event 5">
+    <div class="event-titlebar">
+      <span class="event-window-title">E-SINK EVENTS — 05</span>
+      <button class="event-close" type="button" aria-label="Close event 5">×</button>
+    </div>
+    <div class="event-content">
+      <img class="event-flyer" alt="Event flyer 5" />
+      <div class="empty-event">No more events to show</div>
+    </div>
+  </section>
+
+  <section class="event-window" data-event-slot="6" aria-label="Event 6">
+    <div class="event-titlebar">
+      <span class="event-window-title">E-SINK EVENTS — 06</span>
+      <button class="event-close" type="button" aria-label="Close event 6">×</button>
+    </div>
+    <div class="event-content">
+      <img class="event-flyer" alt="Event flyer 6" />
+      <div class="empty-event">No more events to show</div>
+    </div>
+  </section>
+
+  <script>
+    const eventWindows = [...document.querySelectorAll(".event-window")];
+    let topZ = 50;
+
+    const flyerExtensions = ["png", "jpg", "jpeg", "webp"];
+
+    function loadEventFlyer(eventWindow) {
+      const slot = eventWindow.dataset.eventSlot;
+      const flyer = eventWindow.querySelector(".event-flyer");
+
+      let extensionIndex = 0;
+
+      function tryNextExtension() {
+        if (extensionIndex >= flyerExtensions.length) {
+          flyer.removeAttribute("src");
+          eventWindow.classList.remove("has-event");
+          return;
+        }
+
+        const extension = flyerExtensions[extensionIndex];
+        extensionIndex += 1;
+
+        flyer.src = `images/events/event${slot}.${extension}`;
+      }
+
+      flyer.addEventListener("load", () => {
+        eventWindow.classList.add("has-event");
+      });
+
+      flyer.addEventListener("error", tryNextExtension);
+
+      tryNextExtension();
+    }
+
+    function shuffle(array) {
+      const copy = [...array];
+
+      for (let i = copy.length - 1; i > 0; i -= 1) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+
+      return copy;
+    }
+
+    function randomizeWindows() {
+      const shuffled = shuffle(eventWindows);
+
+      shuffled.forEach((eventWindow, index) => {
+        eventWindow.style.zIndex = 20 + index;
+      });
+
+      topZ = 20 + eventWindows.length;
+
+      eventWindows.forEach((eventWindow) => {
+        const width = eventWindow.offsetWidth;
+        const height = eventWindow.offsetHeight;
+
+        const minLeft = 50;
+        const minTop = 90;
+
+        const maxLeft = Math.max(
+          minLeft,
+          window.innerWidth - width - 30
+        );
+
+        const maxTop = Math.max(
+          minTop,
+          window.innerHeight - height - 30
+        );
+
+        const left =
+          minLeft + Math.random() * Math.max(0, maxLeft - minLeft);
+
+        const top =
+          minTop + Math.random() * Math.max(0, maxTop - minTop);
+
+        eventWindow.style.left = `${left}px`;
+        eventWindow.style.top = `${top}px`;
+      });
+    }
+
+    function bringToFront(eventWindow) {
+      topZ += 1;
+      eventWindow.style.zIndex = topZ;
+    }
+
+    eventWindows.forEach((eventWindow) => {
+      loadEventFlyer(eventWindow);
+
+      const titlebar = eventWindow.querySelector(".event-titlebar");
+      const closeButton = eventWindow.querySelector(".event-close");
+
+      let dragging = false;
+      let offsetX = 0;
+      let offsetY = 0;
+
+      eventWindow.addEventListener("pointerdown", () => {
+        bringToFront(eventWindow);
+      });
+
+      closeButton.addEventListener("pointerdown", (event) => {
+        event.stopPropagation();
+      });
+
+      closeButton.addEventListener("click", (event) => {
+        event.stopPropagation();
+        eventWindow.classList.add("is-closed");
+      });
+
+      titlebar.addEventListener("pointerdown", (event) => {
+        if (event.target.closest(".event-close")) return;
+
+        bringToFront(eventWindow);
+
+        const rect = eventWindow.getBoundingClientRect();
+
+        offsetX = event.clientX - rect.left;
+        offsetY = event.clientY - rect.top;
+
+        dragging = true;
+        titlebar.setPointerCapture(event.pointerId);
+      });
+
+      titlebar.addEventListener("pointermove", (event) => {
+        if (!dragging) return;
+
+        const width = eventWindow.offsetWidth;
+        const height = eventWindow.offsetHeight;
+
+        const maxLeft = Math.max(0, window.innerWidth - width);
+        const maxTop = Math.max(0, window.innerHeight - height);
+
+        const nextLeft = Math.min(
+          Math.max(0, event.clientX - offsetX),
+          maxLeft
+        );
+
+        const nextTop = Math.min(
+          Math.max(0, event.clientY - offsetY),
+          maxTop
+        );
+
+        eventWindow.style.left = `${nextLeft}px`;
+        eventWindow.style.top = `${nextTop}px`;
+      });
+
+      function stopDragging(event) {
+        if (!dragging) return;
+
+        dragging = false;
+
+        if (titlebar.hasPointerCapture(event.pointerId)) {
+          titlebar.releasePointerCapture(event.pointerId);
+        }
+      }
+
+      titlebar.addEventListener("pointerup", stopDragging);
+      titlebar.addEventListener("pointercancel", stopDragging);
+    });
+
+    requestAnimationFrame(() => {
+      randomizeWindows();
+
+      const shuffledWindows = shuffle(eventWindows);
+      let accumulatedDelay = 0;
+
+      shuffledWindows.forEach((eventWindow) => {
+        const randomDelay = 220 + Math.random() * 480;
+        accumulatedDelay += randomDelay;
+
+        setTimeout(() => {
+          eventWindow.classList.add("is-visible");
+          bringToFront(eventWindow);
+        }, accumulatedDelay);
+      });
+    });
+  </script>
+
+</body>
+</html>

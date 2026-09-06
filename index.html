@@ -525,9 +525,15 @@ clip-path: polygon(
     const hiringPopup = document.getElementById("hiringPopup");
     const hiringPopupHandle = document.getElementById("hiringPopupHandle");
     const hiringPopupClose = document.getElementById("hiringPopupClose");
-    setTimeout(() => {
+const hasSeenHiringPopup = sessionStorage.getItem("hasSeenHiringPopup");
+
+if (!hasSeenHiringPopup) {
+  setTimeout(() => {
     hiringPopup.classList.remove("is-waiting");
-    }, 1500);
+
+    sessionStorage.setItem("hasSeenHiringPopup", "true");
+  }, 1500);
+}
       hiringPopupClose.addEventListener("pointerdown", (event) => {
       event.stopPropagation();
     });

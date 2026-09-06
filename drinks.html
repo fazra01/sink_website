@@ -77,12 +77,31 @@
 
     .home-link {
       display: inline-block;
-      padding: 12px 18px;
+      padding: 16px 24px;
       background: rgba(0, 0, 0, 0.58);
       color: #fff;
       text-decoration: none;
       font-family: "VCR OSD Mono", monospace;
-      font-size: 26px;
+      font-size: 34px;
+      clip-path: polygon(
+  8px 0,
+  calc(100% - 8px) 0,
+
+  calc(100% - 8px) 8px,
+  100% 8px,
+
+  100% calc(100% - 8px),
+  calc(100% - 8px) calc(100% - 8px),
+
+  calc(100% - 8px) 100%,
+  8px 100%,
+
+  8px calc(100% - 8px),
+  0 calc(100% - 8px),
+
+  0 8px,
+  8px 8px
+);
     }
         .drinks-hero {
       position: relative;
@@ -178,12 +197,15 @@
   filter: contrast(1.25);
 }
 
-        .specialty-item {
-      display: block;
+    .specialty-item {
+      display: flex;
+      align-items: baseline;
+      gap: 18px;
+      flex-wrap: wrap;
     }
 
     .drink-description {
-      margin-top: 7px;
+      margin-top: 0;
 
       font-family: "VCR OSD Mono", monospace;
       font-size: 16px;
@@ -212,8 +234,18 @@
     .price-number {
     color: #FF3F67;
     }
+    .specialty-heading-row {
+      display: flex;
+      align-items: baseline;
+      gap: 32px;
+      margin-bottom: 65px;
+    }
+
+    .specialty-heading-row .section-title {
+      margin: 0;
+    }
     .specialty-prices {
-      margin: -12px 0 34px;
+      margin: 0;
       font-family: "VCR OSD Mono", monospace;
       font-size: clamp(18px, 2vw, 28px);
       color: #6f6f6f;
