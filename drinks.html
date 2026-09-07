@@ -466,7 +466,118 @@
     .popup-placeholder {
       color: #FF3F67;
     }
+        /* =========================
+      MUFFIN ALLERGEN INFO
+    ========================= */
 
+    .muffin-warning {
+      display: block !important;
+
+      padding: 16px 18px;
+      margin-bottom: 12px;
+
+      background: #E5F75F;
+      border: 3px solid #4C60FF;
+
+      color: #4C60FF;
+
+      font-family: "VCR OSD Mono", monospace;
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+.muffin-item {
+  display: block !important;
+
+  padding-bottom: 20px;
+  margin-bottom: 4px;
+}
+
+    .muffin-name {
+      display: block;
+
+      margin-bottom: 10px;
+
+      color: #FB4CE9;
+
+      font-family: "VCR OSD Mono", monospace;
+      font-size: clamp(22px, 2vw, 30px);
+      line-height: 1.1;
+    }
+
+    .muffin-allergens {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .allergen {
+      display: inline-block;
+
+      padding: 5px 8px;
+
+      border: 2px solid #111;
+
+      font-family: "VCR OSD Mono", monospace;
+      font-size: 13px;
+      line-height: 1;
+
+      box-shadow: 2px 2px 0 #111;
+    }
+
+    .allergen-wheat {
+      background: #FF3F67;
+      color: white;
+    }
+
+    .allergen-egg {
+      background: #E5F75F;
+      color: #111;
+    }
+
+    .allergen-dairy {
+      background: #4C60FF;
+      color: white;
+    }
+
+    .allergen-soy {
+      background: #71FE4D;
+      color: #111;
+    }
+
+    .allergen-walnuts {
+      background: #FB4CE9;
+      color: #111;
+    }
+    .allergen-sesame {
+    background: #71FE4D;
+    color: #111;
+    }
+
+    .allergen-sulfites {
+    background: #FB4CE9;
+    color: #111;
+    }
+    .cream-cheese-title {
+  display: block !important;
+
+  margin-top: 20px;
+  margin-bottom: 2px;
+
+  color: #4C60FF;
+
+  font-family: "VCR OSD Mono", monospace;
+  font-size: 25px;
+}
+
+.cream-cheese-item {
+  display: block !important;
+
+  color: #FB4CE9;
+
+  font-family: "VCR OSD Mono", monospace;
+  font-size: 20px;
+}
     /* =========================
        FAKE CLOSE WARNING
     ========================== */
@@ -1032,7 +1143,7 @@
 
     const folderMenus = {
       syrups: {
-        title: "EXPLORE OUR SYRUPS",
+        title: "SYRUPS",
         items: [
           "Vanilla",
           "Sugar Free Vanilla",
@@ -1066,39 +1177,121 @@
         ]
       },
 
-      muffins: {
-        title: "MUFFINS",
-        items: [
-          "Chocolate Chip",
-          "Lemon Poppyseed",
-          "Coffee Cake",
-          "Double Chocolate",
-          "Pistachio",
-          "Corn",
-          "Blueberry",
-          "Triple Berry",
-          "Cranberry",
-          "Pumpkin",
-          "Butter Rum",
-          "Banana Nut"
-        ]
-      },
+muffins: {
+  title: "MUFFINS",
 
-      bagels: {
-        title: "BAGELS",
-        items: [
-          "Plain",
-          "Cinnamon Raisin",
-          "Everything",
-          "Onion",
-          "Sesame",
-          "Asiago",
-          "French Toast",
-          "Cream Cheese — Plain",
-          "Cream Cheese — Strawberry",
-          "Cream Cheese — Chive & Onion"
-        ]
-      }
+  note:
+    "All muffins are manufactured on equipment exposed to almond, coconut, pecan, pistachio, soy, and walnut products",
+
+  items: [
+    {
+      name: "Chocolate Chip",
+      allergens: ["Wheat", "Egg", "Dairy", "Soy"]
+    },
+
+    {
+      name: "Lemon Poppyseed",
+      allergens: ["Wheat", "Egg", "Dairy"]
+    },
+
+    {
+      name: "Coffee Cake",
+      allergens: ["Wheat", "Egg", "Dairy", "Soy"]
+    },
+
+    {
+      name: "Double Chocolate",
+      allergens: ["Wheat", "Egg", "Dairy", "Soy"]
+    },
+
+    {
+      name: "Pistachio",
+      allergens: ["Wheat", "Egg", "Dairy", "Walnuts"]
+    },
+
+    {
+      name: "Corn",
+      allergens: ["Wheat", "Egg", "Dairy"]
+    },
+
+    {
+      name: "Blueberry",
+      allergens: ["Wheat", "Egg", "Dairy"]
+    },
+
+    {
+      name: "Triple Berry",
+      allergens: ["Wheat", "Egg", "Dairy"]
+    },
+
+    {
+      name: "Cranberry Orange",
+      allergens: ["Wheat", "Egg", "Dairy", "Walnuts"]
+    },
+
+    {
+      name: "Pumpkin",
+      allergens: ["Wheat", "Egg", "Dairy"]
+    },
+
+    {
+      name: "Butter Rum",
+      allergens: ["Wheat", "Egg", "Dairy", "Soy"]
+    },
+
+    {
+      name: "Banana Nut",
+      allergens: ["Wheat", "Egg", "Dairy", "Walnuts"]
+    }
+  ]
+},
+
+bagels: {
+  title: "BAGELS",
+
+  items: [
+    {
+      name: "Plain",
+      allergens: ["Wheat"]
+    },
+
+    {
+      name: "Cinnamon Raisin",
+      allergens: ["Wheat"]
+    },
+
+    {
+      name: "Everything",
+      allergens: ["Wheat", "Sesame"]
+    },
+
+    {
+      name: "Onion",
+      allergens: ["Wheat"]
+    },
+
+    {
+      name: "Sesame",
+      allergens: ["Wheat", "Sesame"]
+    },
+
+    {
+      name: "Asiago",
+      allergens: ["Wheat", "Dairy"]
+    },
+
+    {
+      name: "French Toast",
+      allergens: ["Wheat", "Egg", "Sulfites"]
+    }
+  ],
+
+  creamCheese: [
+    "Plain",
+    "Strawberry",
+    "Chive & Onion"
+  ]
+}
     };
 
 
@@ -1145,40 +1338,169 @@
             menuPopupList.innerHTML = "";
 
 
-            if (folder.items.length === 0) {
+/*
+  Show the muffin equipment warning
+  when the selected folder has one.
+*/
 
-              const emptyItem =
-                document.createElement("li");
+if (folder.note) {
 
-              emptyItem.className =
-                "popup-placeholder";
+  const warning =
+    document.createElement("li");
 
-              emptyItem.textContent =
-                "LIST COMING SOON";
+  warning.className =
+    "muffin-warning";
 
-              menuPopupList.appendChild(
-                emptyItem
-              );
+  warning.textContent =
+    folder.note;
 
-            } else {
+  menuPopupList.appendChild(
+    warning
+  );
 
-              folder.items.forEach(
-                (menuItem) => {
+}
 
-                  const listItem =
-                    document.createElement("li");
 
-                  listItem.textContent =
-                    menuItem;
+if (folder.items.length === 0) {
 
-                  menuPopupList.appendChild(
-                    listItem
-                  );
+  const emptyItem =
+    document.createElement("li");
 
-                }
-              );
+  emptyItem.className =
+    "popup-placeholder";
 
-            }
+  emptyItem.textContent =
+    "LIST COMING SOON";
+
+  menuPopupList.appendChild(
+    emptyItem
+  );
+
+} else {
+
+  folder.items.forEach(
+    (menuItem) => {
+
+      const listItem =
+        document.createElement("li");
+
+
+      /*
+        Syrups and bagels are still
+        normal text strings.
+      */
+
+      if (typeof menuItem === "string") {
+
+        listItem.textContent =
+          menuItem;
+
+      }
+
+
+      /*
+        Muffins are objects containing
+        a name and allergen list.
+      */
+
+      else {
+
+        listItem.className =
+          "muffin-item";
+
+
+        const muffinName =
+          document.createElement("span");
+
+        muffinName.className =
+          "muffin-name";
+
+        muffinName.textContent =
+          menuItem.name;
+
+
+        const allergenContainer =
+          document.createElement("div");
+
+        allergenContainer.className =
+          "muffin-allergens";
+
+
+        menuItem.allergens.forEach(
+          (allergenName) => {
+
+            const allergen =
+              document.createElement("span");
+
+            allergen.className =
+              "allergen allergen-" +
+              allergenName.toLowerCase();
+
+            allergen.textContent =
+              allergenName;
+
+            allergenContainer.appendChild(
+              allergen
+            );
+
+          }
+        );
+
+
+        listItem.appendChild(
+          muffinName
+        );
+
+        listItem.appendChild(
+          allergenContainer
+        );
+
+      }
+
+
+      menuPopupList.appendChild(
+        listItem
+      );
+
+    }
+  );
+if (folder.creamCheese) {
+
+  const creamCheeseTitle =
+    document.createElement("li");
+
+  creamCheeseTitle.className =
+    "cream-cheese-title";
+
+  creamCheeseTitle.textContent =
+    "CREAM CHEESE";
+
+  menuPopupList.appendChild(
+    creamCheeseTitle
+  );
+
+
+  folder.creamCheese.forEach(
+    (flavor) => {
+
+      const creamCheeseItem =
+        document.createElement("li");
+
+      creamCheeseItem.className =
+        "cream-cheese-item";
+
+      creamCheeseItem.textContent =
+        flavor;
+
+      menuPopupList.appendChild(
+        creamCheeseItem
+      );
+
+    }
+  );
+
+}
+}
 
 
             /*
