@@ -109,17 +109,27 @@
 
     .about-hero {
       position: relative;
-      min-height: 430px;
-      margin-bottom: 30px;
+
+      width: 100vw;
+      min-height: 100vh;
+
+      margin-left: calc(50% - 50vw);
+      margin-bottom: 110px;
+
+      display: grid;
+      place-items: center;
+
+      overflow: hidden;
     }
 
     .about-title {
-      position: absolute;
-      left: 0;
-      top: 72px;
+      position: relative;
       z-index: 4;
 
+      width: max-content;
       margin: 0;
+
+      transform: translateY(-9vh);
 
       font-family: "VCR OSD Mono";
       font-size: clamp(70px, 11vw, 180px);
@@ -127,19 +137,43 @@
       line-height: 0.8;
 
       color: var(--pink);
+      text-align: center;
+      white-space: nowrap;
     }
-.hero-horse {
+
+    .hero-food-video {
       position: absolute;
-      right: 10px;
-      top: 55px;
       z-index: 1;
 
-      width: min(650px, 49vw);
+      display: block;
+
       height: auto;
 
-      mix-blend-mode: multiply;
-      transform: rotate(1deg);
       pointer-events: none;
+
+      mix-blend-mode: multiply;
+    }
+
+    .hero-bagel {
+      left: 74%;
+      top: 39%;
+
+      width: min(1500px, 98vw);
+
+      transform:
+        translate(-50%, -50%)
+        rotate(4deg);
+    }
+
+    .hero-muffin {
+      left: 26%;
+      top: 49%;
+
+      width: min(1450px, 94vw);
+
+      transform:
+        translate(-50%, -50%)
+        rotate(-5deg);
     }
 /* =========================================================
        STORY
@@ -589,48 +623,14 @@
     ========================================================= */
 
     .allergen-section {
-      width: 100vw;
-      margin-left: calc(50% - 50vw);
+      width: 100%;
+      margin-left: 0;
       padding: 0 0 70px;
     }
 
-    .allergen-ticker {
-      overflow: hidden;
-
-      border-top: 3px solid var(--ink);
-      border-bottom: 3px solid var(--ink);
-
-      background: var(--red);
-    }
-
-    .allergen-track {
-      width: max-content;
-      display: flex;
-
-      padding: 10px 0;
-
-      white-space: nowrap;
-
-      font-family: "VCR OSD Mono";
-      font-size: 21px;
-
-      color: var(--ink);
-
-      animation: ticker 24s linear infinite;
-    }
-
-    .allergen-track span {
-      padding-right: 60px;
-    }
-
-    @keyframes ticker {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-
     .allergen-inner {
-      width: min(1200px, calc(100% - 64px));
-      margin: 28px auto 0;
+      width: min(920px, 100%);
+      margin: 28px 0 0;
     }
 
     .allergen-copy {
@@ -704,21 +704,33 @@
       }
 
       .about-hero {
-        min-height: 540px;
+        min-height: 100vh;
+        margin-bottom: 80px;
       }
 
       .about-title {
-        top: 85px;
+        position: relative;
+        width: max-content;
+        text-align: center;
+        transform: translateY(-7vh);
       }
 
-      .about-subtitle {
-        top: 210px;
+      .hero-bagel {
+        left: 78%;
+        top: 36%;
+        width: min(820px, 165vw);
+        transform:
+          translate(-50%, -50%)
+          rotate(4deg);
       }
 
-      .hero-horse {
-        width: 78vw;
-        right: -18vw;
-        top: 165px;
+      .hero-muffin {
+        left: 22%;
+        top: 56%;
+        width: min(780px, 158vw);
+        transform:
+          translate(-50%, -50%)
+          rotate(-5deg);
       }
 .story {
         min-height: 650px;
@@ -775,9 +787,6 @@
 .faq-list {
         width: 100%;
       }
-.allergen-inner {
-        width: min(100% - 32px, 1200px);
-      }
     }
   </style>
 </head>
@@ -802,13 +811,28 @@
       <h1 class="about-title">
         ABOUT US
       </h1>
-<!-- Add your black horse image to images/about-horse-black.jpg -->
-      <img
-        class="hero-horse"
-        src="images/about-horse-black.jpg"
-        alt=""
-      />
-</section>
+
+      <video
+        class="hero-food-video hero-bagel"
+        autoplay
+        muted
+        loop
+        playsinline
+      >
+        <source src="videos/bagel.mp4" type="video/mp4">
+      </video>
+
+      <video
+        class="hero-food-video hero-muffin"
+        autoplay
+        muted
+        loop
+        playsinline
+      >
+        <source src="videos/muffin.mp4" type="video/mp4">
+      </video>
+
+    </section>
 
 
     <section class="story">
@@ -1044,17 +1068,7 @@
 
 
     <section class="allergen-section">
-
-      <div class="allergen-ticker">
-        <div class="allergen-track">
-          <span>ALLERGEN NOTICE — WHEAT — EGG — DAIRY — TREENUTS — SOY — SESAME — </span>
-          <span>ALLERGEN NOTICE — WHEAT — EGG — DAIRY — TREENUTS — SOY — SESAME — </span>
-          <span>ALLERGEN NOTICE — WHEAT — EGG — DAIRY — TREENUTS — SOY — SESAME — </span>
-          <span>ALLERGEN NOTICE — WHEAT — EGG — DAIRY — TREENUTS — SOY — SESAME — </span>
-        </div>
-      </div>
-
-      <div class="allergen-inner">
+<div class="allergen-inner">
 
         <p class="allergen-copy">
           “Please inform your server if you or anyone in your party has an allergy
