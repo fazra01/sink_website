@@ -8,7 +8,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
 
   <style>
     @font-face {
@@ -45,7 +45,7 @@
       overflow-x: hidden;
       background: var(--black);
       color: var(--ink);
-      font-family: "Inter", Arial, sans-serif;
+      font-family: "VCR OSD Mono";
     }
 
     /* SAME VIDEO BACKGROUND AS THE CURRENT SITE */
@@ -83,7 +83,7 @@
       background: rgba(0, 0, 0, 0.58);
       color: var(--white);
       text-decoration: none;
-      font-family: "VCR OSD Mono", monospace;
+      font-family: "VCR OSD Mono";
       font-size: 34px;
       line-height: 1;
 
@@ -109,8 +109,8 @@
 
     .about-hero {
       position: relative;
-      min-height: 555px;
-      margin-bottom: 35px;
+      min-height: 430px;
+      margin-bottom: 30px;
     }
 
     .about-title {
@@ -121,10 +121,10 @@
 
       margin: 0;
 
-      font-family: "VCR OSD Mono", monospace;
-      font-size: clamp(82px, 13vw, 190px);
+      font-family: "VCR OSD Mono";
+      font-size: clamp(70px, 11vw, 180px);
       font-weight: normal;
-      line-height: .78;
+      line-height: 0.8;
 
       color: var(--pink);
     }
@@ -141,43 +141,14 @@
       transform: rotate(1deg);
       pointer-events: none;
     }
-
-    .hero-label {
-      position: absolute;
-      right: 30px;
-      top: 360px;
-      z-index: 6;
-
-      margin: 0;
-
-      font-family: "VCR OSD Mono", monospace;
-      font-size: clamp(18px, 2vw, 28px);
-      line-height: 1.25;
-
-      color: var(--blue);
-      text-align: right;
-    }
-
-    .hero-caffeine {
-      position: absolute;
-      left: 15px;
-      top: 245px;
-      z-index: 5;
-
-      width: min(760px, 58vw);
-      height: auto;
-
-      transform: none;
-    }
-
-    /* =========================================================
+/* =========================================================
        STORY
     ========================================================= */
 
     .story {
       position: relative;
       min-height: 475px;
-      margin-bottom: 55px;
+      margin-bottom: 135px;
     }
 
     .story-copy {
@@ -185,13 +156,13 @@
       z-index: 4;
 
       width: min(760px, 60vw);
-      padding-top: 35px;
+      padding-top: 5px;
     }
 
     .story-kicker {
       margin: 0 0 26px;
 
-      font-family: "VCR OSD Mono", monospace;
+      font-family: "VCR OSD Mono";
       font-size: clamp(25px, 3vw, 42px);
       color: var(--blue);
     }
@@ -201,13 +172,13 @@
 
       font-size: clamp(18px, 1.55vw, 23px);
       line-height: 1.58;
-      font-weight: 300;
+      font-weight: normal;
 
       color: var(--ink);
     }
 
     .story-copy strong {
-      font-family: "VCR OSD Mono", monospace;
+      font-family: "VCR OSD Mono";
       font-weight: normal;
     }
 
@@ -234,7 +205,7 @@
     .hours {
       position: relative;
       min-height: 500px;
-      margin-bottom: 55px;
+      margin-bottom: 135px;
       padding-top: 10px;
     }
 
@@ -244,7 +215,7 @@
 
       margin: 0 0 54px;
 
-      font-family: "VCR OSD Mono", monospace;
+      font-family: "VCR OSD Mono";
       font-size: clamp(50px, 7vw, 100px);
       font-weight: normal;
       line-height: .85;
@@ -269,7 +240,7 @@
     }
 
     .day {
-      font-family: "UnifrakturMaguntia", serif;
+      font-family: "UnifrakturMaguntia";
       font-size: clamp(42px, 4.6vw, 70px);
       font-weight: 400;
       line-height: .95;
@@ -277,7 +248,7 @@
     }
 
     .time {
-      font-family: "VCR OSD Mono", monospace;
+      font-family: "VCR OSD Mono";
       font-size: clamp(25px, 3vw, 44px);
       line-height: 1;
       white-space: nowrap;
@@ -312,13 +283,13 @@
       gap: 70px;
       align-items: center;
 
-      margin-bottom: 75px;
+      margin-bottom: 150px;
     }
 
     .gift-copy h2 {
       margin: 0 0 20px;
 
-      font-family: "VCR OSD Mono", monospace;
+      font-family: "VCR OSD Mono";
       font-size: clamp(44px, 6vw, 82px);
       font-weight: normal;
       line-height: .9;
@@ -332,7 +303,7 @@
 
       font-size: 19px;
       line-height: 1.5;
-      font-weight: 300;
+      font-weight: normal;
     }
 
     .gift-button {
@@ -352,7 +323,7 @@
 
       color: var(--white);
 
-      font-family: "VCR OSD Mono", monospace;
+      font-family: "VCR OSD Mono";
       font-size: clamp(22px, 2.25vw, 34px);
       line-height: 1;
 
@@ -382,82 +353,237 @@
       transform: none;
     }
 /* =========================================================
-       FAQ — NO WINDOWS/CARDS, JUST LARGE CLICKABLE TYPE
+       FAQ — DESKTOP FOLDERS + DRINKS-STYLE POPUP
     ========================================================= */
 
     .faq {
       position: relative;
-      margin-bottom: 75px;
+      margin-bottom: 135px;
     }
 
     .faq .section-title {
-      margin-bottom: 34px;
+      margin-bottom: 72px;
     }
 
-    .faq-list {
-      position: relative;
-      z-index: 3;
-      width: min(1100px, 86vw);
-
+    .faq-folders {
       display: grid;
-      gap: 0;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 86px 56px;
+      align-items: start;
     }
 
-    .faq-item {
-      padding: 17px 0 21px;
-    }
-
-    .faq-question {
-      width: 100%;
-
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 25px;
-      align-items: baseline;
+    .faq-folder {
+      appearance: none;
+      -webkit-appearance: none;
 
       border: 0;
       padding: 0;
+      margin: 0;
+
       background: transparent;
 
-      text-align: left;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
 
-      font-family: "VCR OSD Mono", monospace;
-      font-size: clamp(23px, 2.8vw, 40px);
-      line-height: 1.12;
+      font: inherit;
+      color: inherit;
+      text-align: center;
     }
 
-    .faq-item:nth-child(5n + 1) .faq-question { color: var(--pink); }
-    .faq-item:nth-child(5n + 2) .faq-question { color: var(--blue); }
-    .faq-item:nth-child(5n + 3) .faq-question { color: var(--red); }
-    .faq-item:nth-child(5n + 4) .faq-question { color: var(--green); }
-    .faq-item:nth-child(5n + 5) .faq-question { color: var(--pink); }
+    .faq-folder-image {
+      display: block;
 
-    .faq-plus {
-      color: var(--green);
-      font-size: 1.25em;
+      width: min(138px, 10.5vw);
+      height: auto;
+
+      image-rendering: pixelated;
+    }
+
+    .faq-folder-question {
+      display: block;
+
+      max-width: 220px;
+
+      font-family: "VCR OSD Mono";
+      font-size: clamp(15px, 1.2vw, 19px);
+      line-height: 1.25;
+
+      color: #6F686D;
+    }
+
+    .faq-folder:nth-child(2) .faq-folder-icon {
+      background: #4C60FF;
+      box-shadow: 6px 6px 0 #E5F75F;
+    }
+
+    .faq-folder:nth-child(3) .faq-folder-icon {
+      background: #FF3F67;
+      box-shadow: 6px 6px 0 #4C60FF;
+    }
+
+    .faq-folder:nth-child(4) .faq-folder-icon {
+      background: #71FE4D;
+      box-shadow: 6px 6px 0 #FB4CE9;
+    }
+
+    .faq-folder:nth-child(5) .faq-folder-icon {
+      background: #E5F75F;
+      box-shadow: 6px 6px 0 #FF3F67;
+    }
+
+    .faq-folder:nth-child(6) .faq-folder-icon {
+      background: #FB4CE9;
+      box-shadow: 6px 6px 0 #71FE4D;
+    }
+
+    .faq-folder:nth-child(7) .faq-folder-icon {
+      background: #4C60FF;
+      box-shadow: 6px 6px 0 #E5F75F;
+    }
+
+
+    /* SAME WINDOW LANGUAGE AS DRINKS */
+
+    .faq-popup {
+      display: none;
+
+      position: fixed;
+      left: 50%;
+      top: 50%;
+
+      width: min(590px, 82vw);
+      height: min(430px, 66vh);
+
+      min-width: 320px;
+      min-height: 240px;
+
+      max-width: 90vw;
+      max-height: 88vh;
+
+      transform: translate(-50%, -50%);
+
+      z-index: 500;
+
+      border: 3px solid #0055ea;
+      border-radius: 8px 8px 0 0;
+
+      background: #ece9d8;
+
+      box-shadow:
+        2px 2px 0 #001f79,
+        9px 12px 24px rgba(0, 0, 0, 0.3);
+
+      resize: both;
+      overflow: hidden;
+    }
+
+    .faq-popup.is-open {
+      display: block;
+    }
+
+    .faq-popup-titlebar {
+      height: 36px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 3px 4px 3px 9px;
+
+      color: #fff;
+
+      background: linear-gradient(
+        to bottom,
+        #3c8cf4 0%,
+        #0865e6 10%,
+        #0054e3 55%,
+        #0047c8 100%
+      );
+
+      font-family: "VCR OSD Mono";
+      font-size: 15px;
+      font-weight: 700;
+
+      user-select: none;
+      touch-action: none;
+    }
+
+    .faq-popup-title {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .faq-popup-close {
+      position: relative;
+
+      width: 29px;
+      height: 29px;
+
+      display: grid;
+      place-items: center;
+
+      padding: 0;
+      flex: 0 0 auto;
+
+      border: 2px solid #fff;
+      border-radius: 4px;
+
+      background: linear-gradient(
+        to bottom,
+        #f59b82 0%,
+        #e84d2c 45%,
+        #c82d17 100%
+      );
+
+      color: #fff;
+
+      font-family: "VCR OSD Mono";
+      font-size: 18px;
+      font-weight: 700;
       line-height: 1;
     }
 
-    .faq-answer {
-      display: none;
+    .faq-popup-close::before {
+      content: "";
+      position: absolute;
+      inset: -12px;
+    }
 
-      max-width: 850px;
-      margin-top: 15px;
+    .faq-popup-content {
+      height: calc(100% - 36px);
 
+      padding: 38px;
+
+      overflow-y: auto;
+
+      background: #fff;
+    }
+
+    .faq-popup-question {
+      margin: 0 0 28px;
+
+      font-family: "VCR OSD Mono";
+      font-size: clamp(24px, 2.35vw, 34px);
+      line-height: 1.15;
+      font-weight: normal;
+
+      color: #FB4CE9;
+    }
+
+    .faq-popup-answer {
+      margin: 0;
+
+      font-family: "VCR OSD Mono";
       font-size: 18px;
       line-height: 1.55;
-      font-weight: 300;
+      font-weight: normal;
 
-      color: var(--ink);
+      color: #111;
     }
 
-    .faq-answer a {
-      color: var(--blue);
-    }
-
-    .faq-item.open .faq-answer {
-      display: block;
-    }
 /* =========================================================
        ALLERGEN ENDING — REUSES DRINKS' ALLERGEN COLORS
     ========================================================= */
@@ -485,7 +611,7 @@
 
       white-space: nowrap;
 
-      font-family: "VCR OSD Mono", monospace;
+      font-family: "VCR OSD Mono";
       font-size: 21px;
 
       color: var(--ink);
@@ -513,7 +639,7 @@
 
       font-size: 17px;
       line-height: 1.5;
-      font-weight: 300;
+      font-weight: normal;
     }
 
     .chips {
@@ -530,7 +656,7 @@
       border: 2px solid var(--ink);
       box-shadow: 2px 2px 0 var(--ink);
 
-      font-family: "VCR OSD Mono", monospace;
+      font-family: "VCR OSD Mono";
       font-size: 13px;
       line-height: 1;
     }
@@ -543,6 +669,30 @@
     .chip-sesame { background: var(--green); color: var(--ink); }
 
     @media (max-width: 900px) {
+
+      .faq-folders {
+        grid-template-columns: 1fr 1fr;
+        gap: 78px 30px;
+      }
+
+      .faq-folder-image {
+        width: min(110px, 28vw);
+      }
+
+      .faq-folder-question {
+        max-width: 150px;
+        font-size: 13px;
+      }
+
+      .faq-popup {
+        width: 88vw;
+        height: 58vh;
+      }
+
+      .faq-popup-content {
+        padding: 26px;
+      }
+
       .about-page {
         width: min(100% - 32px, 1400px);
         padding-top: 16px;
@@ -570,21 +720,7 @@
         right: -18vw;
         top: 165px;
       }
-
-      .hero-caffeine {
-        left: 0;
-        top: 245px;
-        width: 92vw;
-        transform: none;
-      }
-
-      .hero-label {
-        top: auto;
-        bottom: 170px;
-        right: 0;
-      }
-
-      .story {
+.story {
         min-height: 650px;
       }
 
@@ -672,14 +808,7 @@
         src="images/about-horse-black.jpg"
         alt=""
       />
-
-      <img
-        class="hero-caffeine"
-        src="images/caffeine.png"
-        alt=""
-      />
-
-    </section>
+</section>
 
 
     <section class="story">
@@ -789,107 +918,125 @@
 
     <section class="faq">
 
-      <h2 class="section-title">
-        FAQ
-      </h2>
-<div class="faq-list">
+      <h2 class="section-title">FAQ</h2>
 
-        <article class="faq-item">
-          <button class="faq-question" type="button">
-            <span>Where can I find The Sink?</span>
-            <span class="faq-plus">+</span>
-          </button>
+      <div class="faq-folders">
 
-          <div class="faq-answer">
-            We operate on the second floor of the Mayer Campus Center
-            on Tufts University Medford Campus.
-          </div>
-        </article>
+        <button
+          class="faq-folder"
+          type="button"
+          data-question="Where can I find The Sink?"
+          data-answer="We operate on the second floor of the Mayer Campus Center on Tufts University Medford Campus."
+        >
+          <img class="faq-folder-image" src="images/faq-folder.png" alt="">
+          <span class="faq-folder-question">Where can I find The Sink?</span>
+        </button>
 
+        <button
+          class="faq-folder"
+          type="button"
+          data-question="When do you hire new staff?"
+          data-answer="We hire staff to fill available slots at the beginning of each semester based on staffing needs. Typically, we hire about 10 baristas each fall and 1–3 in the Spring. Please be on the lookout for information from this website, our Instagram account, or our cafe space in the Mayer Campus Center."
+        >
+          <img class="faq-folder-image" src="images/faq-folder.png" alt="">
+          <span class="faq-folder-question">When do you hire new staff?</span>
+        </button>
 
-        <article class="faq-item">
-          <button class="faq-question" type="button">
-            <span>When do you hire new staff?</span>
-            <span class="faq-plus">+</span>
-          </button>
+        <button
+          class="faq-folder"
+          type="button"
+          data-question="How many hours could I work at the Sink?"
+          data-answer="Typically, baristas work anywhere from 2–6 hours per week."
+        >
+          <img class="faq-folder-image" src="images/faq-folder.png" alt="">
+          <span class="faq-folder-question">How many hours could I work at the Sink?</span>
+        </button>
 
-          <div class="faq-answer">
-            We hire staff to fill available slots at the beginning of each
-            semester based on staffing needs. Typically, we hire about 10
-            baristas each fall and 1–3 in the Spring. Please be on the lookout
-            for information from this website, our Instagram account, or our
-            cafe space in the Mayer Campus Center.
-          </div>
-        </article>
+        <button
+          class="faq-folder"
+          type="button"
+          data-question="How long is a shift at the Sink?"
+          data-answer="We try to be very accommodating with semester hours and the spontaneity of college life! Our shifts are typically 2–3 hours each, and can be easily dropped and swapped depending on your schedule."
+        >
+          <img class="faq-folder-image" src="images/faq-folder.png" alt="">
+          <span class="faq-folder-question">How long is a shift at the Sink?</span>
+        </button>
 
+        <button
+          class="faq-folder"
+          type="button"
+          data-question="Does the Sink offer work study?"
+          data-answer="We do! If you qualify for work study through Tufts, you will be able to claim your reward through hours worked at the Sink Cafe."
+        >
+          <img class="faq-folder-image" src="images/faq-folder.png" alt="">
+          <span class="faq-folder-question">Does the Sink offer work study?</span>
+        </button>
 
-        <article class="faq-item">
-          <button class="faq-question" type="button">
-            <span>How many hours could I work at the Sink?</span>
-            <span class="faq-plus">+</span>
-          </button>
+        <button
+          class="faq-folder"
+          type="button"
+          data-question="How can my club collab with The Sink?"
+          data-answer="We have a form for club collaborations that you can fill out! You can also email management at tuftssink@gmail.com with any questions or concerns. Please don’t hesitate to reach out; we’ll respond at our earliest convenience."
+        >
+          <img class="faq-folder-image" src="images/faq-folder.png" alt="">
+          <span class="faq-folder-question">How can my club collab with The Sink?</span>
+        </button>
 
-          <div class="faq-answer">
-            Typically, baristas work anywhere from 2–6 hours per week.
-          </div>
-        </article>
+        <button
+          class="faq-folder"
+          type="button"
+          data-question="I bought a gift card. What do I do now?"
+          data-answer="We offer gift cards through the Tufts University Marketplace website. Once you purchase a gift card, the Office for Campus Life will email you with information regarding pickup."
+        >
+          <img class="faq-folder-image" src="images/faq-folder.png" alt="">
+          <span class="faq-folder-question">I bought a gift card. What do I do now?</span>
+        </button>
 
+      </div>
 
-        <article class="faq-item">
-          <button class="faq-question" type="button">
-            <span>How long is a shift at the Sink? If I have a busy semester, can I still work each week?</span>
-            <span class="faq-plus">+</span>
-          </button>
-
-          <div class="faq-answer">
-            We try to be very accommodating with semester hours and the
-            spontaneity of college life! Our shifts are typically 2–3 hours each,
-            and can be easily dropped and swapped depending on your schedule.
-          </div>
-        </article>
-
-
-        <article class="faq-item">
-          <button class="faq-question" type="button">
-            <span>Does the Sink offer work study?</span>
-            <span class="faq-plus">+</span>
-          </button>
-
-          <div class="faq-answer">
-            We do! If you qualify for work study through Tufts, you will be able
-            to claim your reward through hours worked at the Sink Cafe.
-          </div>
-        </article>
-
-
-        <article class="faq-item">
-          <button class="faq-question" type="button">
-            <span>How can my club collab with The Sink?</span>
-            <span class="faq-plus">+</span>
-          </button>
-
-          <div class="faq-answer">
-            We have a form for club collaborations that you can fill out!
-            You can also email management at
-            <a href="mailto:tuftssink@gmail.com">tuftssink@gmail.com</a>
-            with any questions or concerns. Please don’t hesitate to reach out;
-            we’ll respond at our earliest convenience.
-          </div>
-        </article>
+    </section>
 
 
-        <article class="faq-item">
-          <button class="faq-question" type="button">
-            <span>I bought a gift card, what do I do now and how do I get it?</span>
-            <span class="faq-plus">+</span>
-          </button>
+    <section
+      class="faq-popup"
+      id="faqPopup"
+      role="dialog"
+      aria-modal="false"
+      aria-labelledby="faqPopupTitle"
+    >
 
-          <div class="faq-answer">
-            We offer gift cards through the Tufts University Marketplace website.
-            Once you purchase a gift card, the Office for Campus Life will email
-            you with information regarding pickup.
-          </div>
-        </article>
+      <div
+        class="faq-popup-titlebar"
+        id="faqPopupHandle"
+      >
+        <span
+          class="faq-popup-title"
+          id="faqPopupTitle"
+        >
+          FAQ
+        </span>
+
+        <button
+          class="faq-popup-close"
+          id="faqPopupClose"
+          type="button"
+          aria-label="Close FAQ popup"
+        >
+          ×
+        </button>
+      </div>
+
+      <div class="faq-popup-content">
+
+        <h3
+          class="faq-popup-question"
+          id="faqPopupQuestion"
+        ></h3>
+
+        <p
+          class="faq-popup-answer"
+          id="faqPopupAnswer"
+        ></p>
 
       </div>
 
@@ -932,28 +1079,242 @@
 
 
   <script>
+    const faqPopup =
+      document.getElementById("faqPopup");
+
+    const faqPopupHandle =
+      document.getElementById("faqPopupHandle");
+
+    const faqPopupClose =
+      document.getElementById("faqPopupClose");
+
+    const faqPopupQuestion =
+      document.getElementById("faqPopupQuestion");
+
+    const faqPopupAnswer =
+      document.getElementById("faqPopupAnswer");
+
+
     document
-      .querySelectorAll(".faq-question")
-      .forEach((question) => {
+      .querySelectorAll(".faq-folder")
+      .forEach((folder) => {
 
-        question.addEventListener("click", () => {
+        folder.addEventListener("click", () => {
 
-          const item =
-            question.closest(".faq-item");
+          faqPopupQuestion.textContent =
+            folder.dataset.question;
 
-          const plus =
-            question.querySelector(".faq-plus");
+          faqPopupAnswer.textContent =
+            folder.dataset.answer;
 
-          item.classList.toggle("open");
 
-          plus.textContent =
-            item.classList.contains("open")
-              ? "−"
-              : "+";
+          const popupWidth =
+            Math.min(
+              590,
+              window.innerWidth * 0.82
+            );
+
+          const popupHeight =
+            Math.min(
+              430,
+              window.innerHeight * 0.66
+            );
+
+          const maxLeft =
+            Math.max(
+              20,
+              window.innerWidth -
+              popupWidth -
+              20
+            );
+
+          const maxTop =
+            Math.max(
+              70,
+              window.innerHeight -
+              popupHeight -
+              20
+            );
+
+          const randomLeft =
+            20 +
+            Math.random() *
+            Math.max(
+              0,
+              maxLeft - 20
+            );
+
+          const randomTop =
+            70 +
+            Math.random() *
+            Math.max(
+              0,
+              maxTop - 70
+            );
+
+
+          faqPopup.style.transform =
+            "none";
+
+          faqPopup.style.left =
+            randomLeft + "px";
+
+          faqPopup.style.top =
+            randomTop + "px";
+
+          faqPopup.classList.add(
+            "is-open"
+          );
 
         });
 
       });
+
+
+    faqPopupClose.addEventListener(
+      "pointerdown",
+      (event) => {
+        event.stopPropagation();
+      }
+    );
+
+
+    faqPopupClose.addEventListener(
+      "click",
+      (event) => {
+
+        event.stopPropagation();
+
+        faqPopup.classList.remove(
+          "is-open"
+        );
+
+      }
+    );
+
+
+    let isFaqDragging = false;
+    let faqDragOffsetX = 0;
+    let faqDragOffsetY = 0;
+
+
+    faqPopupHandle.addEventListener(
+      "pointerdown",
+      (event) => {
+
+        if (
+          event.target.closest(
+            ".faq-popup-close"
+          )
+        ) {
+          return;
+        }
+
+
+        const popupRect =
+          faqPopup.getBoundingClientRect();
+
+
+        faqDragOffsetX =
+          event.clientX -
+          popupRect.left;
+
+        faqDragOffsetY =
+          event.clientY -
+          popupRect.top;
+
+
+        isFaqDragging = true;
+
+
+        faqPopupHandle.setPointerCapture(
+          event.pointerId
+        );
+
+      }
+    );
+
+
+    faqPopupHandle.addEventListener(
+      "pointermove",
+      (event) => {
+
+        if (!isFaqDragging) {
+          return;
+        }
+
+
+        const maxLeft =
+          Math.max(
+            0,
+            window.innerWidth -
+            faqPopup.offsetWidth
+          );
+
+        const maxTop =
+          Math.max(
+            0,
+            window.innerHeight -
+            faqPopup.offsetHeight
+          );
+
+
+        faqPopup.style.left =
+          Math.min(
+            Math.max(
+              0,
+              event.clientX -
+              faqDragOffsetX
+            ),
+            maxLeft
+          ) + "px";
+
+        faqPopup.style.top =
+          Math.min(
+            Math.max(
+              0,
+              event.clientY -
+              faqDragOffsetY
+            ),
+            maxTop
+          ) + "px";
+
+      }
+    );
+
+
+    function stopFaqDragging(event) {
+
+      if (!isFaqDragging) {
+        return;
+      }
+
+      isFaqDragging = false;
+
+      if (
+        faqPopupHandle.hasPointerCapture(
+          event.pointerId
+        )
+      ) {
+
+        faqPopupHandle.releasePointerCapture(
+          event.pointerId
+        );
+
+      }
+
+    }
+
+
+    faqPopupHandle.addEventListener(
+      "pointerup",
+      stopFaqDragging
+    );
+
+    faqPopupHandle.addEventListener(
+      "pointercancel",
+      stopFaqDragging
+    );
   </script>
 
 </body>
