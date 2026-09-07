@@ -109,8 +109,8 @@
 
     .about-hero {
       position: relative;
-      min-height: 760px;
-      margin-bottom: 90px;
+      min-height: 555px;
+      margin-bottom: 35px;
     }
 
     .about-title {
@@ -128,24 +128,7 @@
 
       color: var(--pink);
     }
-
-    .about-subtitle {
-      position: absolute;
-      left: 12px;
-      top: 245px;
-      z-index: 5;
-
-      margin: 0;
-
-      font-family: "UnifrakturMaguntia", serif;
-      font-size: clamp(48px, 6vw, 90px);
-      line-height: 1;
-      font-weight: 400;
-
-      color: var(--grey);
-    }
-
-    .hero-horse {
+.hero-horse {
       position: absolute;
       right: 10px;
       top: 55px;
@@ -162,7 +145,7 @@
     .hero-label {
       position: absolute;
       right: 30px;
-      top: 465px;
+      top: 360px;
       z-index: 6;
 
       margin: 0;
@@ -177,14 +160,14 @@
 
     .hero-caffeine {
       position: absolute;
-      left: 120px;
-      bottom: 30px;
+      left: 15px;
+      top: 245px;
       z-index: 5;
 
-      width: min(430px, 34vw);
+      width: min(760px, 58vw);
       height: auto;
 
-      transform: rotate(-2deg);
+      transform: none;
     }
 
     /* =========================================================
@@ -193,8 +176,8 @@
 
     .story {
       position: relative;
-      min-height: 610px;
-      margin-bottom: 110px;
+      min-height: 475px;
+      margin-bottom: 55px;
     }
 
     .story-copy {
@@ -250,9 +233,9 @@
 
     .hours {
       position: relative;
-      min-height: 700px;
-      margin-bottom: 110px;
-      padding-top: 40px;
+      min-height: 500px;
+      margin-bottom: 55px;
+      padding-top: 10px;
     }
 
     .section-title {
@@ -325,11 +308,11 @@
       position: relative;
 
       display: grid;
-      grid-template-columns: minmax(330px, .85fr) minmax(420px, 1fr);
-      gap: 80px;
+      grid-template-columns: minmax(420px, .8fr) minmax(460px, 1.2fr);
+      gap: 70px;
       align-items: center;
 
-      margin-bottom: 140px;
+      margin-bottom: 75px;
     }
 
     .gift-copy h2 {
@@ -381,7 +364,10 @@
 
     .gift-art {
       position: relative;
-      min-height: 450px;
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
     }
 
     .gift-art img {
@@ -389,26 +375,19 @@
     }
 
     .gift-sink {
-      right: 0;
-      top: 0;
-      width: min(330px, 24vw);
-      transform: rotate(5deg);
+      position: relative;
+      right: auto;
+      top: auto;
+      width: min(470px, 34vw);
+      transform: none;
     }
-
-    .gift-caffeine {
-      left: -15px;
-      bottom: 10px;
-      width: min(440px, 32vw);
-      transform: rotate(-3deg);
-    }
-
-    /* =========================================================
+/* =========================================================
        FAQ — NO WINDOWS/CARDS, JUST LARGE CLICKABLE TYPE
     ========================================================= */
 
     .faq {
       position: relative;
-      margin-bottom: 120px;
+      margin-bottom: 75px;
     }
 
     .faq .section-title {
@@ -479,22 +458,7 @@
     .faq-item.open .faq-answer {
       display: block;
     }
-
-    .faq-art {
-      position: absolute;
-      right: -50px;
-      top: -50px;
-      z-index: 1;
-
-      width: min(390px, 29vw);
-      height: auto;
-
-      transform: rotate(4deg);
-      opacity: .92;
-      pointer-events: none;
-    }
-
-    /* =========================================================
+/* =========================================================
        ALLERGEN ENDING — REUSES DRINKS' ALLERGEN COLORS
     ========================================================= */
 
@@ -590,7 +554,7 @@
       }
 
       .about-hero {
-        min-height: 660px;
+        min-height: 540px;
       }
 
       .about-title {
@@ -609,7 +573,9 @@
 
       .hero-caffeine {
         left: 0;
-        width: 65vw;
+        top: 245px;
+        width: 92vw;
+        transform: none;
       }
 
       .hero-label {
@@ -619,7 +585,7 @@
       }
 
       .story {
-        min-height: 760px;
+        min-height: 650px;
       }
 
       .story-copy {
@@ -659,28 +625,21 @@
       }
 
       .gift-art {
-        min-height: 390px;
+        min-height: 330px;
+        justify-content: center;
+      }
+
+      .gift-sink {
+        width: min(440px, 82vw);
       }
 
       .gift-sink {
         width: 54vw;
       }
-
-      .gift-caffeine {
-        width: 75vw;
-      }
-
-      .faq-list {
+.faq-list {
         width: 100%;
       }
-
-      .faq-art {
-        opacity: .22;
-        width: 70vw;
-        right: -25vw;
-      }
-
-      .allergen-inner {
+.allergen-inner {
         width: min(100% - 32px, 1200px);
       }
     }
@@ -707,23 +666,12 @@
       <h1 class="about-title">
         ABOUT US
       </h1>
-
-      <p class="about-subtitle">
-        The Sink
-      </p>
-
-      <!-- Add your black horse image to images/about-horse-black.jpg -->
+<!-- Add your black horse image to images/about-horse-black.jpg -->
       <img
         class="hero-horse"
         src="images/about-horse-black.jpg"
         alt=""
       />
-
-      <p class="hero-label">
-        STUDENT RUN<br>
-        TUFTS UNIVERSITY<br>
-        COFFEE + COMMUNITY
-      </p>
 
       <img
         class="hero-caffeine"
@@ -803,6 +751,16 @@
 
     <section class="gift">
 
+      <div class="gift-art">
+
+        <img
+          class="gift-sink"
+          src="images/the-sink-black.png"
+          alt=""
+        />
+
+      </div>
+
       <div class="gift-copy">
 
         <h2>
@@ -826,22 +784,6 @@
 
       </div>
 
-      <div class="gift-art">
-
-        <img
-          class="gift-sink"
-          src="images/the-sink-black.png"
-          alt=""
-        />
-
-        <img
-          class="gift-caffeine"
-          src="images/caffeine.png"
-          alt=""
-        />
-
-      </div>
-
     </section>
 
 
@@ -850,14 +792,7 @@
       <h2 class="section-title">
         FAQ
       </h2>
-
-      <img
-        class="faq-art"
-        src="images/cup.png"
-        alt=""
-      />
-
-      <div class="faq-list">
+<div class="faq-list">
 
         <article class="faq-item">
           <button class="faq-question" type="button">
