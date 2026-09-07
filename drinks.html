@@ -485,7 +485,9 @@
       font-size: 15px;
       line-height: 1.45;
     }
-
+.syrup-item {
+  color: #FB4CE9;
+}
 .muffin-item {
   display: block !important;
 
@@ -1390,12 +1392,16 @@ if (folder.items.length === 0) {
         normal text strings.
       */
 
-      if (typeof menuItem === "string") {
+    if (typeof menuItem === "string") {
 
-        listItem.textContent =
-          menuItem;
+      listItem.textContent =
+        menuItem;
 
+      if (folderName === "syrups") {
+        listItem.classList.add("syrup-item");
       }
+
+    }
 
 
       /*
