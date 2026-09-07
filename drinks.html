@@ -560,26 +560,6 @@
     background: #FB4CE9;
     color: #111;
     }
-    .cream-cheese-title {
-  display: block !important;
-
-  margin-top: 20px;
-  margin-bottom: 2px;
-
-  color: #4C60FF;
-
-  font-family: "VCR OSD Mono", monospace;
-  font-size: 25px;
-}
-
-.cream-cheese-item {
-  display: block !important;
-
-  color: #FB4CE9;
-
-  font-family: "VCR OSD Mono", monospace;
-  font-size: 20px;
-}
     /* =========================
        FAKE CLOSE WARNING
     ========================== */
@@ -1472,37 +1452,29 @@ if (folder.items.length === 0) {
   );
 if (folder.creamCheese) {
 
-  const creamCheeseTitle =
+  const creamCheeseItem =
     document.createElement("li");
 
-  creamCheeseTitle.className =
-    "cream-cheese-title";
+  creamCheeseItem.className =
+    "muffin-item";
 
-  creamCheeseTitle.textContent =
-    "CREAM CHEESE";
 
-  menuPopupList.appendChild(
-    creamCheeseTitle
+  const creamCheeseName =
+    document.createElement("span");
+
+  creamCheeseName.className =
+    "muffin-name";
+
+  creamCheeseName.textContent =
+    `Cream Cheese (${folder.creamCheese.join(", ")})`;
+
+
+  creamCheeseItem.appendChild(
+    creamCheeseName
   );
 
-
-  folder.creamCheese.forEach(
-    (flavor) => {
-
-      const creamCheeseItem =
-        document.createElement("li");
-
-      creamCheeseItem.className =
-        "cream-cheese-item";
-
-      creamCheeseItem.textContent =
-        flavor;
-
-      menuPopupList.appendChild(
-        creamCheeseItem
-      );
-
-    }
+  menuPopupList.appendChild(
+    creamCheeseItem
   );
 
 }
