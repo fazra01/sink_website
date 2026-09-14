@@ -197,31 +197,42 @@ clip-path: polygon(
        MOBILE
     ========================== */
 
-    @media (max-width: 700px) {
-      .about-link,
-      .events-link {
-        top: 16px;
-      }
+@media (max-width: 700px) {
+  .about-link,
+  .events-link {
+    top: 16px;
+  }
+  .menu-link,
+  .contact-link {
+    bottom: 16px;
+  }
+  .about-link,
+  .menu-link {
+    left: 16px;
+  }
+  .events-link,
+  .contact-link {
+    right: 16px;
+  }
+  .corner-link {
+    font-size: 24px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
 
-      .menu-link,
-      .contact-link {
-        bottom: 16px;
-      }
+  .home-title {
+    width: 100%;
+    max-width: 92vw;
+    padding: 0 16px;
+  }
 
-      .about-link,
-      .menu-link {
-        left: 16px;
-      }
-
-      .events-link,
-      .contact-link {
-        right: 16px;
-      }
-
-      .corner-link {
-        font-size: 24px;
-      }
-    }
+  .home-title-small {
+    font-size: clamp(26px, 7.5vw, 38px);
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+  }
+}
 
 
     /* =========================
@@ -394,17 +405,20 @@ clip-path: polygon(
     @media (max-width: 700px) {
       .hiring-popup {
         top: 10vh;
-        width: 94vw;
+        left: 3vw;
+        right: 3vw;
+        width: auto;
+        max-width: none;
       }
-
       .hiring-popup-titlebar {
-        height: 31px;
-        font-size: 13px;
+        height: 44px;
+        font-size: 14px;
+        padding: 3px 6px 3px 10px;
       }
-
       .hiring-popup-close {
-        width: 23px;
-        height: 23px;
+        width: 36px;
+        height: 36px;
+        font-size: 20px;
       }
     }
 
