@@ -16,7 +16,7 @@
 
     * {
       box-sizing: border-box;
-      cursor: url("images/cat-paw-cursor.png") 16 16, auto !important;
+      cursor: url("images/cat-paw-cursor.webp") 16 16, auto !important;
     }
 
     html,
@@ -258,10 +258,10 @@
     ALWAYS SIX EVENT WINDOWS.
 
     To add flyers, create:
-      images/events/event1.png
-      images/events/event2.png
+      images/events/event1.webp
+      images/events/event2.webp
       ...
-      images/events/event6.png
+      images/events/event6.webp
 
     JPG, JPEG and WEBP also work.
 
@@ -339,7 +339,7 @@
     const eventWindows = [...document.querySelectorAll(".event-window")];
     let topZ = 50;
 
-    const flyerExtensions = ["png", "jpg", "jpeg", "webp"];
+    const flyerExtensions = ["webp", "jpg", "jpeg", "webp"];
 
     function loadEventFlyer(eventWindow) {
       const slot = eventWindow.dataset.eventSlot;
