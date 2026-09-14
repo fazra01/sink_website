@@ -247,18 +247,26 @@
         gap: 28px;
       }
 
-      .contact-button {
+         .contact-button {
         width: min(620px, 90vw);
         aspect-ratio: 80 / 13;
         padding: 0 28px;
         font-size: clamp(18px, 4.5vw, 30px);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
       .site-footer {
-        position: relative;
-        left: auto;
-        bottom: auto;
+        /* !important is needed here specifically because the
+           unconditional .site-footer rule further down the
+           stylesheet has the same specificity and comes later
+           in source order, so it would otherwise win and cancel
+           this override out on every screen size. */
+        position: relative !important;
+        left: auto !important;
+        bottom: auto !important;
 
-        padding: 10px 24px 24px;
+        padding: 10px 24px 24px !important;
       }
     }
     video::-webkit-media-controls {
