@@ -253,6 +253,13 @@
         padding: 0 28px;
         font-size: clamp(18px, 4.5vw, 30px);
       }
+      .site-footer {
+        position: relative;
+        left: auto;
+        bottom: auto;
+
+        padding: 10px 24px 24px;
+      }
     }
     video::-webkit-media-controls {
       display: none !important;
@@ -265,6 +272,24 @@
 
     video::-webkit-media-controls-play-button {
       display: none !important;
+    }
+    .site-footer {
+      position: fixed;
+      left: 0;
+      bottom: 16px;
+      z-index: 30;
+
+      width: 100%;
+
+      padding: 0 24px;
+
+      text-align: center;
+
+      font-family: "VCR OSD Mono";
+      font-size: 14px;
+      line-height: 1.2;
+
+      color: #FB4CE9;
     }
   </style>
 </head>
@@ -319,6 +344,10 @@
     </nav>
 
   </main>
+
+  <footer class="site-footer">
+    © 2026 The Sink Cafe. All rights reserved.
+  </footer>
 
 </body>
 </html>
